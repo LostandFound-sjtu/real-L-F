@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-# real-L-F
-真实的开发环境
-real environment
-hh
-=======
+
 # lost_and_found (Django web Project)
 
 ![1](https://user-images.githubusercontent.com/21084550/51787200-16ef3880-2199-11e9-9cdd-5032a5cc30da.PNG)
