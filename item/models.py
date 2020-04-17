@@ -2,8 +2,10 @@ from django.db import models
 from home.models import MyUser
 
 # Create your models here.
-
-
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.name
 class Item(models.Model):
     status = models.CharField(max_length=50)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)

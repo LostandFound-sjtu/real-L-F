@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from person.models import Person
-from item.models import Item
+from item.models import Item,Tag
 from lost.forms import LostPersonModelForm, LostItemModelForm
 from comment.models import PersonComment, PersonReplayComment
 from comment.models import ItemComment, ItemReplayComment
@@ -39,9 +39,12 @@ def lost(request):
             Q(identification_mark__icontains=search) |
             Q(secret_information__icontains=search)
         )
+
+    lost_tag=Tag.objects.all()
     context = {
         'lost_person': lost_person,
-        'lost_item': lost_item
+        'lost_item': lost_item,
+        'lost_tag':lost_tag
     }
     return render(request, 'lost.html', context)
 

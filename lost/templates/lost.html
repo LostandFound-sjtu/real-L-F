@@ -30,6 +30,21 @@
     <br>
     <br>
 
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+            {% for tag in lost_tag %}
+			    <div class="btn-group">
+				    <button class="btn btn-default" type="button">
+                        <em class="glyphicon glyphicon-align-left"></em> {{tag}}
+                    </button>
+
+			    </div>
+             {% endfor %}
+		    </div>
+	</div>
+    </div>
+
     <!-- Lost Person Section -->
     {% for lp in lost_person %}
         <div class="col-lg-4 col-md-6">
