@@ -8,13 +8,13 @@
 
 {% block content %}
 
-    <div class="offset-md-3 col-md-6 my-5">
+    <div class="offset-md-3 col-md-7 my-5">
 
         <form action="" method="POST">
             {% csrf_token %}
             <h2 style="text-align: center">Are you sure you want to delete {{ f_item_delete }}" ? </h2>
-            <input type="submit" class="btn btn-danger" value="Yes" />
-            <input type="submit" class="btn btn-info" value="No" />
+            <br>
+            <div align="center"><input type="submit" class="btn btn-danger" value="Yes" /></div>
         </form>
         <div style="margin-bottom: 180px"></div>
 
