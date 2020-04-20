@@ -1,6 +1,6 @@
 from django.db import models
 from home.models import MyUser
-
+#数据库
 # Create your models here.
 
 #item表
