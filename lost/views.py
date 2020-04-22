@@ -1,7 +1,8 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from person.models import Person
-from item.models import Item,Tag
+from item.models import Item
+from tag.models import Tag
 from lost.forms import LostPersonModelForm, LostItemModelForm
 from comment.models import PersonComment, PersonReplayComment
 from comment.models import ItemComment, ItemReplayComment
@@ -10,13 +11,13 @@ from django.contrib import messages
 
 # Create your views here.
 
-
-# List of all lost item and person
-
+#  下面这个是主界面的展示函数
 def lost(request):
     lost_person = Person.objects.filter(person='L').all()
+    #  数据库内部匹配
     lost_item = Item.objects.filter(category='L').all()
     search = request.GET.get('q')
+    #  这个内部搜索可以暂时留在这里，内部搜索实现
     if search:
         lost_person = Person.objects.filter(
             Q(status__icontains=search) |
@@ -40,11 +41,12 @@ def lost(request):
             Q(secret_information__icontains=search)
         )
 
-    lost_tag=Tag.objects.all()
+    #  想要展示的标签，在前端需要映射到网址动态显示
+    #  在lost_item里面已经拥有了丢失标签
     context = {
         'lost_person': lost_person,
         'lost_item': lost_item,
-        'lost_tag':lost_tag
+
     }
     return render(request, 'lost.html', context)
 
@@ -68,8 +70,8 @@ def lost_person_details(request, id):
     return render(request, 'lost-person-details.html', context)
 
 
-# Lost Person Replay comment form
 
+#  登录需求，可以暂时不了解这个
 @login_required(login_url='/login/')
 def lost_person_reply_comment(request, id):
     comment = PersonComment.objects.get(id=id)
@@ -82,8 +84,8 @@ def lost_person_reply_comment(request, id):
     return render(request, 'lost-person-details.html')
 
 
-# Lost Item Details Views
 
+#  下面是丢失物品的展示
 @login_required(login_url='/login/')
 def lost_item_details(request, id):
     l_item = get_object_or_404(Item, id=id)
@@ -101,8 +103,9 @@ def lost_item_details(request, id):
     return render(request, 'lost-item-details.html', context)
 
 
-# Lost item replay comment
 
+
+#  这个reply暂时不管
 @login_required(login_url='/login/')
 def lost_item_reply_comment(request, id):
     comment = ItemComment.objects.get(id=id)
@@ -115,8 +118,7 @@ def lost_item_reply_comment(request, id):
     return render(request, 'lost-item-details.html')
 
 
-# Lost Person Create Form
-
+#  这个基本是没用的   不会有人丢失的
 @login_required(login_url='/login/')
 def create_lost_person(request):
     if request.method == 'POST':
@@ -135,8 +137,7 @@ def create_lost_person(request):
     return render(request, 'lost-form.html', context)
 
 
-# Lost Item Create Form
-
+#  丢失物品的表单
 @login_required(login_url='/login/')
 def create_lost_item(request):
     if request.method == 'POST':

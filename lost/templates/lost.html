@@ -9,7 +9,8 @@
 
 {% block  content %}
 
-    <!-- Message Framework -->
+
+    <!-- 下面这一堆不知道有啥用 -->
     <div class="container-fluid my-4">
         {% if messages %}
              <div class="messages">
@@ -21,22 +22,23 @@
             </div>
         {% endif %}
     </div>
-    <!-- End Message Framework -->
 
 
+    <!-- 下面是标题选项-->
     <div class="container-fluid">
         <h4 style="text-align: center">All Lost Post Here</h4>
     </div>
     <br>
     <br>
 
+    <!-- 显示标签的模块 -->
     <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-            {% for tag in lost_tag %}
+            {% for tag in lost_item.tags.all %}
 			    <div class="btn-group">
 				    <button class="btn btn-default" type="button">
-                        <em class="glyphicon glyphicon-align-left"></em> {{tag}}
+                        <em class="glyphicon glyphicon-align-left"></em> {{tags}}
                     </button>
 
 			    </div>
@@ -45,37 +47,22 @@
 	</div>
     </div>
 
-    <!-- Lost Person Section -->
-    {% for lp in lost_person %}
-        <div class="col-lg-4 col-md-6">
-            <div class="view overlay rounded mb-3 img-thumbnail">
-                <a href="{% url 'lost_person_details' lp.id %}" target="blank">
-                    <img class="img-fluid" src="{{ lp.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>
-                </a>
-            </div>
-            <p><strong>Status: {{ lp.status }}</strong></p>
-            <p><strong>Name : {{ lp.name }} </strong></p>
-            <p><strong>Location : {{ lp.location }} </strong></p>
-            <p><strong>Updated Time : {{ lp.update | naturaltime }}</strong></p>
-            <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_person_details' lp.id %}" target="blank">Details</a>
-        </div>
-
-        <!-- Search Result for person -->
-        {% empty %}
-
-            <div style="margin-bottom: 85px"></div>
-            <div class="container mb-5">
-                <h2 style="text-align: center"><strong>Your expected result is not found !</strong></h2>
-            </div>
-            <div style="margin-bottom: 250px"></div>
-            <!-- End Result for person -->
-    {% endfor %}
-    <!-- End Lost  Section -->
     
-    
-     <!-- Lost item Section -->
+     <!-- 显示图形的模块 -->
     {% for lI in lost_item %}
         <div class="col-lg-4 col-md-6">
+
+            <span>
+                {% for tag in lost_item %}
+                    <a href="#"
+                       class="badge badge-secondary"
+                    >
+                    <!-- 纳闷了  为啥这个标签不太正常？-->
+                        {{ tag.tags }}
+                    </a>
+                {% endfor %}
+            </span>
+
             <div class="view overlay rounded mb-3 img-thumbnail">
                 <a href="{% url 'lost_item_details' lI.id %}" target="blank">
                     <img class="img-fluid" src="{{ lI.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>

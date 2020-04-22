@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'comment',
     'found',
     'lost',
+    'tag',
+    'taggit',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

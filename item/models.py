@@ -1,11 +1,10 @@
 from django.db import models
 from home.models import MyUser
+from tag.models import Tag
 
+from taggit.managers import TaggableManager
 # Create your models here.
-class Tag(models.Model):
-    name = models.CharField(max_length=50)
-    def __str__(self):
-        return self.name
+
 class Item(models.Model):
     status = models.CharField(max_length=50)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
@@ -20,8 +19,11 @@ class Item(models.Model):
     image = models.FileField()
     identification_mark = models.TextField(help_text='Separate each item by comma')
     secret_information = models.TextField(help_text='Separate each item by comma')
+    tags = TaggableManager(blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
+    #  不妨假设物品有且仅有一个标签，但是还没有具体化
+
 
     def __str__(self):
         return self.status
