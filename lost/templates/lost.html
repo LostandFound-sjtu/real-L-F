@@ -4,25 +4,55 @@
 
 {% load humanize %}
 
+
 {% block title %} Lost Post || {{ block.super }} {% endblock title %}
+
 
 
 {% block  content %}
 
 
     <!-- 下面这一堆不知道有啥用 -->
-    <div class="container-fluid my-4">
-        {% if messages %}
-             <div class="messages">
-                {% for message in messages %}
-                <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button>
-                </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    </div>
 
+
+    <div id="box">
+	<dl>
+                <dt>类型</dt>
+            {% for tag in all_tag %}
+                <dd>{{tag.name}}</dd>
+            {% endfor %}
+            </dl>
+            <dl>
+                <dt>价格：</dt>
+                <dd>3000-3999</dd>
+                <dd>4000-4999</dd>
+                <dd>5000-5999</dd>
+                <dd>6000-6999</dd>
+                <dd>7000-7999</dd>
+                <dd>8000-8999</dd>
+                <dd>9000-9999</dd>
+                <dd>10000以上</dd>
+            </dl>
+            <dl>
+                <dt>地点</dt>
+
+                <dd>11英寸</dd>
+                <dd>12英寸</dd>
+                <dd>13英寸</dd>
+                <dd>14英寸</dd>
+                <dd>15英寸</dd>
+                <dd>16英寸</dd>
+            </dl>
+            <dl style="border: none">
+                <dt>显卡：</dt>
+                <dd>独立显卡</dd>
+                <dd>集成显卡</dd>
+                <dd>核芯显卡</dd>
+            </dl>
+            <dl class="select" style="border-bottom-width: 0px;">
+                <dt>已选条件：</dt>
+            </dl>
+        </div>
 
     <!-- 下面是标题选项-->
     <div class="container-fluid">
@@ -31,14 +61,14 @@
     <br>
     <br>
 
-    <!-- 显示标签的模块 -->
+    <!-- 显示标签的模块  现在是基本废掉的模块-->
     <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-            {% for tag in lost_item.tags.all %}
+            {% for tag in all_tag %}
 			    <div class="btn-group">
 				    <button class="btn btn-default" type="button">
-                        <em class="glyphicon glyphicon-align-left"></em> {{tags}}
+                        <em class="glyphicon glyphicon-align-left"></em> {{tag.name}}
                     </button>
 
 			    </div>
@@ -47,20 +77,19 @@
 	</div>
     </div>
 
-    
+    <!-- 下面要开始写标签栏目了-->
+    <!-- 成功显示了所有的标签 -->
      <!-- 显示图形的模块 -->
     {% for lI in lost_item %}
         <div class="col-lg-4 col-md-6">
 
             <span>
-                {% for tag in lost_item %}
                     <a href="#"
                        class="badge badge-secondary"
                     >
                     <!-- 纳闷了  为啥这个标签不太正常？-->
-                        {{ tag.tags }}
+                        {{ lI.tags.all|join:"," }}
                     </a>
-                {% endfor %}
             </span>
 
             <div class="view overlay rounded mb-3 img-thumbnail">

@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'login',
     'signup',
     'item',
-    'comment',
     'found',
     'lost',
     'tag',

@@ -45,6 +45,8 @@
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/static/js/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="/static/js/left-side-menu.js"></script>
+
+    <link type="text/css" href="/static/css/style_tmp.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -215,12 +217,15 @@
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="/static/js/script.js"></script>
     <script>
         new WOW().init();
     </script>
     <script src="{% static 'js/wow.min.js' %}"></script>
     <script src="{% static 'js/anime.min.js' %}"></script>
     <script src="{% static 'js/cropper.min.js' %}"></script>
+
+    <script src="{% static 'prototype.js' %}"></script>
 
     {% block scripts %}
     <!-- Moving Java Scripts Code -->
@@ -268,7 +273,10 @@
             easing: "easeOutExpo",
             delay: 1000
           });
+
     </script>
+
+
    {% endblock scripts %}
     <!-- End Moving Java Scripts Code -->
 

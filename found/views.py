@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from item.models import Item
 from .forms import  FoundItemModelForm
-from comment.models import ItemComment, ItemReplayComment
+
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -41,31 +41,10 @@ def found_item_details(request, id):
         'related_found_item': related_found_item
     }
 
-    # Found item Comment
-    if request.method == "POST":
-        ItemComment.objects.create(
-            message=request.POST.get('message'),
-            created_by=request.user,
-            item=f_item
-        )
-    # End Found item Comment
 
     return render(request, 'found-item-details.html', context)
 
 
-# Found item replay comment
-
-def found_item_reply_comment(request, id):
-    comment = ItemComment.objects.get(id=id)
-    if request.method == "POST":
-        ItemReplayComment.objects.create(
-            message=request.POST.get('message'),
-            reply=comment,
-            created_by=request.user
-        )
-    return render(request, 'found-item-details.html')
-
-# Found Item Create View
 
 @login_required(login_url='/login/')
 def create_found_item(request):

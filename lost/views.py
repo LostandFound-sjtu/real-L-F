@@ -1,12 +1,11 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from item.models import Item
-from tag.models import Tag
 from lost.forms import LostItemModelForm
-from comment.models import ItemComment, ItemReplayComment
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from taggit.managers import TaggableManager
+from taggit.models import Tag
 # Create your views here.
 
 #  下面这个是主界面的展示函数
@@ -15,6 +14,7 @@ def lost(request):
     lost_item = Item.objects.filter(category='L').all()
     search = request.GET.get('q')
     #  这个内部搜索可以暂时留在这里，内部搜索实现
+    all_tag = Tag.objects.all()
     if search:
 
 
@@ -32,7 +32,7 @@ def lost(request):
     #  在lost_item里面已经拥有了丢失标签
     context = {
         'lost_item': lost_item,
-
+        'all_tag' : all_tag,
     }
     return render(request, 'lost.html', context)
 
@@ -47,30 +47,9 @@ def lost_item_details(request, id):
     context = {
         'l_item': l_item
     }
-    # Item Comment Form
-    if request.method == "POST":
-        ItemComment.objects.create(
-            message=request.POST.get('message'),
-            created_by=request.user,
-            item=l_item
-        )
-    # End Item Comment
     return render(request, 'lost-item-details.html', context)
 
 
-
-
-#  这个reply暂时不管
-@login_required(login_url='/login/')
-def lost_item_reply_comment(request, id):
-    comment = ItemComment.objects.get(id=id)
-    if request.method == "POST":
-        ItemReplayComment.objects.create(
-            message=request.POST.get('message'),
-            reply=comment,
-            created_by=request.user
-        )
-    return render(request, 'lost-item-details.html')
 
 
 #  丢失物品的表单
