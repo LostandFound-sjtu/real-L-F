@@ -48,11 +48,11 @@ INSTALLED_APPS = [
     'home',
     'login',
     'signup',
-    'person',
     'item',
-    'comment',
     'found',
     'lost',
+    'tag',
+    'taggit',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

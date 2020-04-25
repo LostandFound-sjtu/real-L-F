@@ -48,7 +48,7 @@
             {% endfor %}
             <!-- End Recent Lost Post -->
 
-            <!-- Start Location -->
+            <!-- 一些没啥用的框框 -->
             <div class="col-md-4 col-lg-4">
                 <div class="card my-4 border-info">
                     <h5 class="card-header text-center">Location</h5>
@@ -105,15 +105,7 @@
                 </div>
                <!-- End Category -->
 
-                <!-- Total Post Count -->
-                <div class="card my-4 border-primary">
-                    <h5 class="card-header text-center">Social Media</h5>
-                    <div class="card-body">
-                        <span class="fa fa-facebook mr-2"> Facebook</span>
-                        <span class="fa fa-linkedin"> linkedin</span>
-                    </div>
-                </div>
-                <!--End Total Post Count -->
+
 
             </div>
         </div>
@@ -123,30 +115,10 @@
     <br>
     <br>
 
-    <!-- Recent Lost Post -->
+    <!-- 又是一些没啥用的框框 -->
     <h2 class="my-3">Recent Lost Post</h2>
     <div class="container">
         <div class="row">
-            <!-- Lost Person -->
-            {% for lp in lost_person %}
-                <div class="col-lg-4 col-xl-4">
-                    <div class="mb-4">
-                        <a href="{% url 'lost_person_details' lp.id %}">
-                            <img class="img-fluid" src="{{ lp.image.url }}" alt="Sample image">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-6">
-                    <h3><strong>{{ lp.status }}</strong></h3>
-                    <h4><strong><pre>Name       : {{ lp.name }}</pre></strong></h4>
-                    <h4><strong><pre>Location   : {{ lp.location }}</pre></strong></h4>
-                    <h4><strong><pre>Updated    : {{ lp.update | naturaltime }}</pre></strong></h4>
-                    <h4><strong><pre>Created by : {{ lp.user.username }}</pre></strong></h4>
-                    <a href="{% url 'lost_person_details' lp.id %}" class="btn btn-success btn-md">Read more</a>
-                </div>
-            {% endfor %}
-            <!-- End Lost Person -->
-
             <!-- Lost Item -->
             {% for li in lost_item %}
                 <div class="col-lg-4 col-xl-4">
@@ -166,14 +138,13 @@
                     <a href="{% url 'lost_item_details' li.id %}" class="btn btn-primary btn-md">Read more</a>
                 </div>
             {% endfor %}
-            <!-- End Lost item -->
+
         </div>
     </div>
-    <!-- End  Recent Lost Post Section -->
 
 
     <br>
-    <!-- Recent Found Post -->
+    <!-- 展示最近发现的东西emm -->
     <h2 style="text-align: center">See Found Post</h2>
     <br>
     <div class="container">
@@ -189,21 +160,7 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Recent Found Person Post -->
-                {% for rP in  recent_found_person %}
-                    <tr>
-                    <th>
-                        <a href="{% url 'found_person_details'  rP.id%}" target="_blank">{{ rP.status }}</a>
-                    </th>
-                      <td>{{ rP.name }}</td>
-                      <td>{{ rP.location }}</td>
-                      <td>{{ rP.update | naturaltime }}</td>
-                    </tr>
-                {% endfor %}
-                <!--End Recent Found Person Post -->
 
-
-                <!-- Recent Found Item Post -->
                 {% for rI in recent_found_item %}
                     <tr>
                         <th>
@@ -214,13 +171,11 @@
                         <td>{{ rI.update | naturaltime }}</td>
                     </tr>
                 {% endfor %}
-              <!-- End Recent Found Item Post -->
               </tbody>
             </table>
             </div>
         </div>
     </div>
-    <!-- End Recent Found Post -->
 
 {% endblock content %}
 
