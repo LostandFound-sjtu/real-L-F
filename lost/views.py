@@ -6,6 +6,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from taggit.managers import TaggableManager
 from taggit.models import Tag
+from django.http import JsonResponse
+from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+import json
 # Create your views here.
 
 #  下面这个是主界面的展示函数
@@ -16,8 +21,6 @@ def lost(request):
     #  这个内部搜索可以暂时留在这里，内部搜索实现
     all_tag = Tag.objects.all()
     if search:
-
-
         lost_item = Item.objects.filter(
             Q(status__icontains=search) |
             Q(name__icontains=search) |
@@ -35,7 +38,6 @@ def lost(request):
         'all_tag' : all_tag,
     }
     return render(request, 'lost.html', context)
-
 
 
 
@@ -100,3 +102,10 @@ def lost_item_delete(request, id):
         'f_item_delete': l_item_delete
     }
     return render(request, 'lost_item_delete.html', context)
+
+def data_refresh(request):
+    tags = serializers.serialize("json", Tag.objects.all())
+    context = {
+        "all_tag": tags,
+    }
+    return JsonResponse(context)

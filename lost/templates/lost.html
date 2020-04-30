@@ -7,52 +7,28 @@
 
 {% block title %} Lost Post || {{ block.super }} {% endblock title %}
 
-
-
 {% block  content %}
 
-
-    <!-- 下面这一堆不知道有啥用 -->
-
-
+    <!-- 标签栏目 -->
     <div id="box">
 	<dl>
-                <dt>类型</dt>
+        <dt>类型</dt>
             {% for tag in all_tag %}
                 <dd>{{tag.name}}</dd>
             {% endfor %}
             </dl>
-            <dl>
-                <dt>价格：</dt>
-                <dd>3000-3999</dd>
-                <dd>4000-4999</dd>
-                <dd>5000-5999</dd>
-                <dd>6000-6999</dd>
-                <dd>7000-7999</dd>
-                <dd>8000-8999</dd>
-                <dd>9000-9999</dd>
-                <dd>10000以上</dd>
-            </dl>
-            <dl>
-                <dt>地点</dt>
-
-                <dd>11英寸</dd>
-                <dd>12英寸</dd>
-                <dd>13英寸</dd>
-                <dd>14英寸</dd>
-                <dd>15英寸</dd>
-                <dd>16英寸</dd>
-            </dl>
             <dl style="border: none">
-                <dt>显卡：</dt>
-                <dd>独立显卡</dd>
-                <dd>集成显卡</dd>
-                <dd>核芯显卡</dd>
+                <dt>位置：</dt>
+                <dd>上院</dd>
+                <dd>中院</dd>
+                <dd>下院</dd>
             </dl>
             <dl class="select" style="border-bottom-width: 0px;">
                 <dt>已选条件：</dt>
             </dl>
         </div>
+
+
 
     <!-- 下面是标题选项-->
     <div class="container-fluid">
@@ -61,48 +37,36 @@
     <br>
     <br>
 
-    <!-- 显示标签的模块  现在是基本废掉的模块-->
-    <div class="container">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-            {% for tag in all_tag %}
-			    <div class="btn-group">
-				    <button class="btn btn-default" type="button">
-                        <em class="glyphicon glyphicon-align-left"></em> {{tag.name}}
-                    </button>
-
-			    </div>
-             {% endfor %}
-		    </div>
-	</div>
-    </div>
 
     <!-- 下面要开始写标签栏目了-->
     <!-- 成功显示了所有的标签 -->
      <!-- 显示图形的模块 -->
+
     {% for lI in lost_item %}
-        <div class="col-lg-4 col-md-6">
 
-            <span>
-                    <a href="#"
-                       class="badge badge-secondary"
-                    >
-                    <!-- 纳闷了  为啥这个标签不太正常？-->
-                        {{ lI.tags.all|join:"," }}
-                    </a>
-            </span>
+                <div class="col-lg-4 col-md-6" id="total_thing">
 
-            <div class="view overlay rounded mb-3 img-thumbnail">
-                <a href="{% url 'lost_item_details' lI.id %}" target="blank">
-                    <img class="img-fluid" src="{{ lI.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>
-                </a>
-            </div>
-            <p><strong>Status: {{ lI.status }}</strong></p>
-            <p><strong>Name : {{ lI.name }} </strong></p>
-            <p><strong>Location : {{ lI.location }}</strong></p>
-            <p><strong>Updated Time : {{ lI.update | naturaltime }} </strong></p>
-            <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">Details</a>
-        </div>
+                    <span>
+                            <a href="#"
+                               class="badge badge-secondary"
+                            >
+                            <!-- 纳闷了  为啥这个标签不太正常？-->
+                                {{ lI.tags.all|join:"," }}
+                            </a>
+                    </span>
+
+                    <div class="view overlay rounded mb-3 img-thumbnail">
+                        <a href="{% url 'lost_item_details' lI.id %}" target="blank">
+                            <img class="img-fluid" src="{{ lI.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>
+                        </a>
+                    </div>
+                    <p><strong>Status: {{ lI.status }}</strong></p>
+                    <p><strong>Name : {{ lI.name }} </strong></p>
+                    <p><strong>Location : {{ lI.location }}</strong></p>
+                    <p><strong>Updated Time : {{ lI.update | naturaltime }} </strong></p>
+                    <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">Details</a>
+                </div>
+
     <!-- End Lost Section -->
     {% endfor %}
 

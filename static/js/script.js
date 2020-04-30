@@ -14,7 +14,7 @@ function select(n) {
 	for (var i = 0; i < dds.length; i++) {
 		dds[i].onclick = function () {
 			//给当前点击的添加一个高亮
-			//prev && (prev.className = '');
+			//prev && (prev.className = '');f
 
 			if(prev){
 				prev.className = ''
