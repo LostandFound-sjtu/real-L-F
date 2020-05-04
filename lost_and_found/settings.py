@@ -51,8 +51,9 @@ INSTALLED_APPS = [
     'item',
     'found',
     'lost',
-    'tag',
     'taggit',
+    'tag',
+    'search',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
