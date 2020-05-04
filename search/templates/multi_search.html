@@ -1,0 +1,46 @@
+{% extends 'master.html' %}
+
+{%load my_tags%}
+{%load static%}
+{% load humanize %}
+
+{% block title %} Multi-Choices Search {% endblock title %}
+{% block  content %}
+    <h3>选择:</h3>
+        <div>
+            {% for each in class_list %}
+                {%action current_url each 1%}
+            {% endfor %}
+        </div>
+        <div>
+            {% for each in tag_list %}
+                {%action current_url each 2%}
+            {%endfor%}
+        </div>
+
+    <h3>物品一览:</h3>
+        {% for lI in item_list %}
+            <div class="col-lg-4 col-md-6">
+
+                <span>
+                        <a href="#"
+                           class="badge badge-secondary"
+                        >
+                            {{ lI.tags.all|join:"," }}
+                        </a>
+                </span>
+
+                <div class="view overlay rounded mb-3 img-thumbnail">
+                    <a href="{% url 'lost_item_details' lI.id %}" target="blank">
+                        <img class="img-fluid" src="{{ lI.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>
+                    </a>
+                </div>
+                <p><strong>Status: {{ lI.status }}</strong></p>
+                <p><strong>Name : {{ lI.name }} </strong></p>
+                <p><strong>Location : {{ lI.location }}</strong></p>
+                <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">Details</a>
+            </div>
+        <!-- End Lost Section -->
+        {% endfor %}
+
+{% endblock content %}
