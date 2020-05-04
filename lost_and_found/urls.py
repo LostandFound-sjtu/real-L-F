@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('found.urls')),
     path('', include('lost.urls')),
     path('', include('home.urls')),
+    path('', include('search.urls')),
 ]
 
 if settings.DEBUG:
