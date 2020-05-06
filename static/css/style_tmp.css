@@ -37,7 +37,7 @@ dd {
 }
 
 #box dd.active {
-	color: #c4284d;
+	color: #3353c4;
 	font-weight: bold;
 }
 
@@ -48,7 +48,7 @@ dd {
 }
 
 #box dl.select dd{
-	border: 1px solid #c4284d;
+	border: 1px solid #3059c4;
 	height: 25px;
 	line-height: 25px;
 	margin-top: 13px;
@@ -61,7 +61,7 @@ dd {
 	display: inline-block;
 	text-align: center;
 	line-height: 20px;
-	background: #c4284d;
+	background: #22c467;
 	color: #fff;
 	margin-left: 10px;
 	cursor: pointer;border-radius: 5px;

@@ -4,15 +4,21 @@ from item.models import Item
 from lost.forms import LostItemModelForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from taggit.managers import TaggableManager
-from taggit.models import Tag
+
+from tag.models import Tag
 from django.http import JsonResponse
 from django.core import serializers
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+
 
 # Create your views here.
-
+def make(request,kind_name_slug):
+    #tmp_tag=Tag.objects.filter(slug=kind_name_slug)
+    #print(tmp_tag)
+    lost_item = Item.objects.filter(tmp_slug=kind_name_slug)
+    print(lost_item)
+    context_dict = {'lost_item':lost_item}
+    print(context_dict)
+    return render(request, 'make.html', context_dict)
 #  下面这个是主界面的展示函数
 def lost(request):
     #  数据库内部匹配
@@ -35,7 +41,7 @@ def lost(request):
     #  在lost_item里面已经拥有了丢失标签
     context = {
         'lost_item': lost_item,
-        'all_tag' : all_tag,
+        'all_tag':all_tag,
     }
     return render(request, 'lost.html', context)
 

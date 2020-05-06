@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'item',
     'found',
     'lost',
-    'taggit',
     'tag',
     'search',
 ]

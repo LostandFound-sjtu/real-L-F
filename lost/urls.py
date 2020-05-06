@@ -15,4 +15,5 @@ urlpatterns = [
     path('lost_item/<int:id>/delete', views.lost_item_delete, name='lost_item_delete'),
     #  new  path 在这里
     path('data_fresh/', views.data_refresh, name = "data_fresh"),
+    path('lost/make/<kind_name_slug>/', views.make, name="make"),
 ]

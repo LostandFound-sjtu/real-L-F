@@ -6,59 +6,42 @@ for (var i = 0; i < dls.length; i++) {
 	select(i);
 }
 
-
-   /* $(document).ready(function(){
-        function refresh(){
-            $.getJSON("/data_fresh/", function (ret) {
-                $('#result').html(ret.data1);
-
-                    })
-                }
-                setInterval(refresh, 3000)
-            })/'*/
-
-
 function select(n) {
 	var dds = dls[n].querySelectorAll('dd');
 	var prev=null;
 	var dd=null;	//每一行都需要创建一个dd标签，放到这里是为了如果标签已经被创建了，通过这个变量能够找到这个标签
-	var data = null;
+
 	for (var i = 0; i < dds.length; i++) {
+
 		dds[i].onclick = function () {
-			//这里是上面的高亮，上面三行的东西
 			//给当前点击的添加一个高亮
 			//prev && (prev.className = '');
-
 			if(prev){
 				prev.className = ''
 			}
-
 			this.className = 'active';
-
 			prev = this;
-
-
 			//创建dd标签
-			// this是当前元素，parentnode是单数，只有一个父节点
 			var parent=this.parentNode;
 			if(!parent.mark){	//这个条件满足说明对应的dd标签还没有创建
-				// 在对象中创建一个对象，
 				dd=document.createElement('dd');
-				// innerHTML是一个字符串，可以获取内容，这里就是要返回的内容，该怎么搞？
-
+				dd.id="choose";
 				dd.innerHTML=this.innerHTML;
-				// appendChild 是在节点的子节点列表末尾添加新节点
-
-				data = dd.innerText;
 				selected.appendChild(dd);
-
 				parent.mark=true;
 
 			}else{
 				//走这里的时候说明对应的标签已经创建了，只需要把内容修改了就可以了
 				dd.innerHTML=this.innerHTML;
 			}
-			
+
+			var btn = document.getElementById("choose");
+
+            var tmp_data = dd.innerHTML;
+            $("#div1").load("make/"+(tmp_data)+'/');
+            //  这里的标签完全可以修改成为之前dd里面的数据
+            //  这样就可以完成动态查找！ 对  只需要查找一个标签就可以！
+
 			var span=document.createElement('span');
 			var This=this;
 			span.innerHTML='X';
@@ -77,6 +60,4 @@ function select(n) {
 			dd.appendChild(span);
 		};
 	}
-
 }
-

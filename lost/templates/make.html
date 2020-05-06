@@ -1,0 +1,32 @@
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+                            <div class="row">
+                            {% for lI in lost_item %}
+                                                 <div class="col-lg-4 col-md-6">
+            <!-- 中间这几行暂时注释掉
+            <span>
+                    <a href="#"
+                       class="badge badge-secondary"
+                    >
+                        {{ lI.tags.all|join:"," }}
+                    </a>
+            </span>
+            -->
+            <div class="view overlay rounded mb-3 img-thumbnail">
+                <a href="{% url 'lost_item_details' lI.id %}" target="blank">
+                    <img class="img-fluid" src="{{ lI.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>
+                </a>
+            </div>
+            <p><strong>Status: {{ lI.status }}</strong></p>
+            <p><strong>Name : {{ lI.name }} </strong></p>
+            <p><strong>Location : {{ lI.location }}</strong></p>
+            <p><strong>Updated Time : {{ lI.update }} </strong></p>
+            <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">Details</a>
+        </div>
+                            {% endfor %}
+                            </div>
+
+	    </div>
+    </div>
+    </div>

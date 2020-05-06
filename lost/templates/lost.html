@@ -13,30 +13,24 @@
     <!-- 下面要开始写标签栏目了-->
     <!-- 成功显示了所有的标签 -->
      <!-- 显示图形的模块 -->
-    {% for lI in lost_item %}
-        <div class="col-lg-4 col-md-6">
 
-            <span>
-                    <a href="#"
-                       class="badge badge-secondary"
-                    >
-                    <!-- 纳闷了  为啥这个标签不太正常？-->
-                        {{ lI.tags.all|join:"," }}
-                    </a>
-            </span>
 
-            <div class="view overlay rounded mb-3 img-thumbnail">
-                <a href="{% url 'lost_item_details' lI.id %}" target="blank">
-                    <img class="img-fluid" src="{{ lI.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>
-                </a>
-            </div>
-            <p><strong>Status: {{ lI.status }}</strong></p>
-            <p><strong>Name : {{ lI.name }} </strong></p>
-            <p><strong>Location : {{ lI.location }}</strong></p>
-            <p><strong>Updated Time : {{ lI.update | naturaltime }} </strong></p>
-            <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">Details</a>
-        </div>
-    <!-- End Lost Section -->
-    {% endfor %}
+    <div id="box">
+        <dl>
+        <!-- 每个类别都要单独做一个app 保证所有的遍历过程-->
+            <dt>类别：</dt>
+            {% for kind in all_tag %}
+                 <dd id="dd">{{kind.name}}</dd>
+            {% endfor %}
+        </dl>
+        <dl class="select" style="border-bottom-width: 0px;">
+            <dt>已选条件：</dt>
+        </dl>
+    <br>
+
+    </div>
+    <div id="div1">
+
+    </div>
 
 {% endblock content %}

@@ -11,7 +11,7 @@ class LostItemModelForm(forms.ModelForm):
         fields = [
             'status',
             'name',
-            'tags',
+            'tag',
             'phone_number',
             'category',
             'location',
@@ -20,3 +20,9 @@ class LostItemModelForm(forms.ModelForm):
             'secret_information',
         ]
 
+class TagForm(forms.ModelForm):
+    name=forms.CharField(max_length=128)
+    slug=forms.CharField(widget=forms.HiddenInput(),required=False)
+    class Meta:
+        model = Tag
+        fields=('name',)
