@@ -17,7 +17,7 @@ function select(n) {
 			//prev && (prev.className = '');f
 
 			if(prev){
-				prev.className = ''
+				prev.className = '';
 			}
 
 			this.className = 'active';
