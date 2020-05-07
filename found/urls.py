@@ -15,4 +15,6 @@ urlpatterns = [
 
     path('item/<int:id>/delete', views.found_item_delete, name='found_item_delete'),
 
+    path('found/make/<kind_name_slug>/', views.make, name="make"),
+
 ]

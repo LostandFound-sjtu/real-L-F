@@ -2,12 +2,26 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from item.models import Item
 from .forms import  FoundItemModelForm
-
+from tag.models import Tag
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # Create your views here.
 
+def make(request,kind_name_slug):
+    #  哇  动态ajax居然是可以实现的  哈哈！
+    #tmp_tag=Tag.objects.filter(slug=kind_name_slug)
+    #print(tmp_tag)
+    found_item = Item.objects.filter(
+        Q(tmp_slug=kind_name_slug) &
+        Q(category='F')
+    )
+    #lost_item = Item.objects.filter(tag=tmp_tag)
+    #print(lost_item)
+    context_dict = {'found_item':found_item,
+                    'type':'Found',}
+    #print(context_dict)
+    return render(request, 'make.html', context_dict)
 
 def found(request):
     found_item = Item.objects.filter(category='F').all()
@@ -24,8 +38,11 @@ def found(request):
             Q(identification_mark__icontains=search) |
             Q(secret_information__icontains=search)
         )
+
+    all_tag=Tag.objects.all()
     context = {
-        'found_item': found_item
+        'found_item': found_item,
+        'all_tag':all_tag,
     }
     return render(request, 'found.html', context)
 

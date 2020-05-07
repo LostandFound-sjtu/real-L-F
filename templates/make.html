@@ -1,8 +1,30 @@
-    <div class="container">
+<div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
                             <div class="row">
-                            {% for lI in lost_item %}
+
+
+
+        {% if type == 'Found' %}
+                                {% for fI in found_item %}
+        <div class="col-lg-4 col-md-6">
+            <div class="view overlay rounded mb-3 img-thumbnail">
+                <a href="{% url 'found_item_details'  fI.id %}" target="blank">
+                    <img class="img-fluid" src="{{ fI.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>
+                </a>
+            </div>
+            <p><strong>Status: {{ fI.status }}</strong></p>
+            <p><strong>Item Name : {{ fI.name }} </strong></p>
+            <p><strong>Location : {{ fI.location }}</strong></p>
+            <p><strong>Updated Time : {{ fI.update }} </strong></p>
+            <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'found_item_details'  fI.id %}" target="blank">Details</a>
+        </div>
+        <div style="margin-bottom: 310px "></div>
+
+    {% endfor %}
+                            {% else %}
+
+                             {% for lI in lost_item %}
                                                  <div class="col-lg-4 col-md-6">
             <!-- 中间这几行暂时注释掉
             <span>
@@ -25,6 +47,7 @@
             <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">Details</a>
         </div>
                             {% endfor %}
+                            {% endif %}
                             </div>
 
 	    </div>

@@ -2,7 +2,7 @@
 from django import forms
 
 from item.models import Item
-
+from tag.models import Tag
 
 
 class FoundItemModelForm(forms.ModelForm):
@@ -11,6 +11,7 @@ class FoundItemModelForm(forms.ModelForm):
         fields = [
             'status',
             'name',
+            'tag',
             'phone_number',
             'category',
             'location',
@@ -18,3 +19,11 @@ class FoundItemModelForm(forms.ModelForm):
             'identification_mark',
             'secret_information',
         ]
+
+#  tag类里面是有自动填充功能的emm
+class TagForm(forms.ModelForm):
+    name=forms.CharField(max_length=128)
+    slug=forms.CharField(widget=forms.HiddenInput(),required=False)
+    class Meta:
+        model = Tag
+        fields=('name',)

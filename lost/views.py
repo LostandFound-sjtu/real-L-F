@@ -12,12 +12,18 @@ from django.core import serializers
 
 # Create your views here.
 def make(request,kind_name_slug):
+    #  哇  动态ajax居然是可以实现的  哈哈！
     #tmp_tag=Tag.objects.filter(slug=kind_name_slug)
     #print(tmp_tag)
-    lost_item = Item.objects.filter(tmp_slug=kind_name_slug)
-    print(lost_item)
-    context_dict = {'lost_item':lost_item}
-    print(context_dict)
+    lost_item = Item.objects.filter(
+        Q(tmp_slug=kind_name_slug) &
+        Q(category='L')
+    )
+    #lost_item = Item.objects.filter(tag=tmp_tag)
+    #print(lost_item)
+    context_dict = {'lost_item':lost_item,
+                    'type':'Lost',}
+    #print(context_dict)
     return render(request, 'make.html', context_dict)
 #  下面这个是主界面的展示函数
 def lost(request):

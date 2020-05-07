@@ -35,8 +35,6 @@ function select(n) {
 				dd.innerHTML=this.innerHTML;
 			}
 
-			var btn = document.getElementById("choose");
-
             var tmp_data = dd.innerHTML;
             $("#div1").load("make/"+(tmp_data)+'/');
             //  这里的标签完全可以修改成为之前dd里面的数据

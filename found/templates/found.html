@@ -11,6 +11,26 @@
 {% block  content %}
 
     <!-- Message Framework -->
+
+
+    <div id="box">
+        <dl>
+        <!-- 每个类别都要单独做一个app 保证所有的遍历过程-->
+            <dt>类别：</dt>
+            {% for kind in all_tag %}
+                 <dd id="dd">{{kind.name}}</dd>
+            {% endfor %}
+        </dl>
+        <dl class="select" style="border-bottom-width: 0px;">
+            <dt>已选条件：</dt>
+        </dl>
+    <br>
+
+    </div>
+    <div id="div1">
+
+    </div>
+
     <div class="container-fluid">
         {% if messages %}
              <div class="messages">
@@ -29,26 +49,6 @@
     </div>
     <br>
     <br>
-
-     <!-- Found item Section -->
-    {% for fI in found_item %}
-        <div class="col-lg-4 col-md-6">
-            <div class="view overlay rounded mb-3 img-thumbnail">
-                <a href="{% url 'found_item_details'  fI.id %}" target="blank">
-                    <img class="img-fluid" src="{{ fI.image.url }}" alt="Uh oh image not Found !" style="max-width: 100%;"/>
-                </a>
-            </div>
-            <p><strong>Status: {{ fI.status }}</strong></p>
-            <p><strong>Item Name : {{ fI.name }} </strong></p>
-            <p><strong>Location : {{ fI.location }}</strong></p>
-            <p><strong>Updated Time : {{ fI.update | naturaltime }} </strong></p>
-            <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'found_item_details'  fI.id %}" target="blank">Details</a>
-        </div>
-        <div style="margin-bottom: 310px "></div>
-
-    {% endfor %}
-
-    <!-- End Found  Section -->
 
 {% endblock content %}
 
