@@ -14,6 +14,7 @@ class Item(models.Model):
     category = models.CharField(max_length=1, choices=CATEGORY_CHOICES, default="Found Item")
     location = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=16)
+    mail_address = models.CharField(max_length=50, default='')
     image = models.FileField()
     identification_mark = models.TextField(help_text='Separate each item by comma')
     secret_information = models.TextField(help_text='Separate each item by comma')
