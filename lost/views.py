@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from tag.models import Tag
 from django.http import JsonResponse
 from django.core import serializers
+from django.conf import settings
 
 
 # Create your views here.
