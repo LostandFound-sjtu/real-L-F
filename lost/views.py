@@ -4,7 +4,7 @@ from item.models import Item
 from lost.forms import LostItemModelForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.core.mail import send_mail
 from tag.models import Tag
 from django.http import JsonResponse
 from django.core import serializers
@@ -122,3 +122,13 @@ def data_refresh(request):
         "all_tag": tags,
     }
     return JsonResponse(context)
+
+def lost_item_send_mail(request, id):
+    l_item = get_object_or_404(Item, id=id)
+    l_name = l_item.name
+    l_address = l_item.mail_address
+    message = "您在Lost&Found网站上所上传的 " + l_name + " 有了新动态"
+    send_mail('Lost&Found 失物提醒邮件', message, settings.EMAIL_FROM,
+    [l_address], fail_silently=False)
+
+    return render(request, 'lost_item_mail.html')
