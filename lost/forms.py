@@ -12,6 +12,7 @@ class LostItemModelForm(forms.ModelForm):
             'status',
             'name',
             'tag',
+            'mail_address',
             'phone_number',
             'category',
             'location',
