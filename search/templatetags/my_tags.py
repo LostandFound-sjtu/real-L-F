@@ -9,7 +9,7 @@ def action(current_url, item,index):
     url_part_list = current_url.split('-')
 
     if index == 2:
-        list = ['All','Keys','Cards','Books']
+        list = ['All','key','idcard','book','bike']
         if item == url_part_list[2]:
              temp = "<a href='%s' class='active'>%s</a>"
         else:
