@@ -31,7 +31,7 @@
                 <h4><strong><pre>Create by    : {{ l_item.user }}</pre></strong></h4>
 
                 <!-- End Found Item Post Details -->
-
+                <a class="btn btn-info" href="{% url 'lost_item_mail' id=l_item.id   %}">发送提醒邮件</a>
                 <!-- Update and Delete Post Section -->
                  {% if l_item.user == user %}
                     <a class="btn btn-success" href="{% url 'lost_item_update' id=l_item.id   %}">Update</a>
