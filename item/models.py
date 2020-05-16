@@ -17,13 +17,6 @@ class Item(models.Model):
     image = models.FileField()
     identification_mark = models.TextField(help_text='Separate each item by comma')
     secret_information = models.TextField(help_text='Separate each item by comma')
-    # 对tag的类进行具体化，暂时分为三类
-    # 这个tag的动态化貌似不太好使实现emm
-    #TAG_CHOICES = (
-     #   ('0', 'keys'),
-      #  ('1', 'cards'),
-       # ('2', 'books')
-    #)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
     timestamp = models.DateTimeField(auto_now_add=True)
