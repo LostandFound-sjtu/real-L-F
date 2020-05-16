@@ -13,6 +13,8 @@ urlpatterns = [
 
     # Delete View
     path('lost_item/<int:id>/delete', views.lost_item_delete, name='lost_item_delete'),
+    # Mail
+    path('lost_item/<int:id>/send_mail', views.lost_item_send_mail, name='lost_item_mail'),
     #  new  path 在这里
     path('data_fresh/', views.data_refresh, name = "data_fresh"),
     path('lost/make/<kind_name_slug>/', views.make, name="make"),
