@@ -9,7 +9,9 @@ from tag.models import Tag
 from django.http import JsonResponse
 from django.core import serializers
 from django.conf import settings
-
+from comment.models import ItemComment
+from comment.forms import CommentForm
+from django.contrib.contenttypes.models import ContentType
 
 # Create your views here.
 def make(request,kind_name_slug):
@@ -59,13 +61,16 @@ def lost(request):
 #  下面是丢失物品的展示
 @login_required(login_url='/login/')
 def lost_item_details(request, id):
-    l_item = get_object_or_404(Item, id=id)
+    l_item = get_object_or_404(Item, pk=id)
+    l_item_content_type = ContentType.objects.get_for_model(l_item)
+    comments = ItemComment.objects.filter(content_type=l_item_content_type, object_id=id, parent=None)
     context = {
-        'l_item': l_item
+        'l_item': l_item,
+        'comments': comments.order_by('-comment_time'),
+        'comment_form': CommentForm(
+            initial={'content_type': l_item_content_type, 'object_id': id, 'reply_comment_id': 0})
     }
     return render(request, 'lost-item-details.html', context)
-
-
 
 
 #  丢失物品的表单
