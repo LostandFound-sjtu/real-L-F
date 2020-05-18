@@ -22,7 +22,7 @@ class SendMail(threading.Thread):
         send_mail(
             self.subject,
             '您收到的新评论： /n',
-            settings.EMAIL_HOST_USER,
+            settings.EMAIL_FROM,
             [self.email],
             fail_silently=self.fail_silently,
             html_message=self.text
