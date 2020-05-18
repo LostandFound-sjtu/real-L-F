@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from comment.models import ItemComment
 from comment.forms import CommentForm
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 
 def make(request,kind_name_slug):
