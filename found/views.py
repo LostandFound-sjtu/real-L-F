@@ -5,7 +5,9 @@ from .forms import  FoundItemModelForm
 from tag.models import Tag
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.contrib.contenttypes.models import ContentType
+from comment.models import ItemComment
+from comment.forms import CommentForm
 # Create your views here.
 
 def make(request,kind_name_slug):
@@ -50,16 +52,6 @@ def found(request):
 
 # Found Item Details
 
-def found_item_details(request, id):
-    f_item = get_object_or_404(Item, id=id)
-    related_found_item = Item.objects.filter(location__icontains='dhaka')
-    context = {
-        'f_item': f_item,
-        'related_found_item': related_found_item
-    }
-
-
-    return render(request, 'found-item-details.html', context)
 
 
 
@@ -110,3 +102,28 @@ def found_item_delete(request, id):
         'fi_delete': fi_delete
     }
     return render(request, 'found-item-delete.html', context)
+
+# Found Item Details
+@login_required(login_url='/login/')
+def found_item_details(request, id):
+    f_item = get_object_or_404(Item, pk=id)
+    f_item_content_type = ContentType.objects.get_for_model(f_item)
+    comments = ItemComment.objects.filter(content_type=f_item_content_type, object_id=id, parent=None)
+    context = {
+        'f_item': f_item,
+        'comments': comments.order_by('-comment_time'),
+        'comment_form': CommentForm(
+            initial={'content_type': f_item_content_type, 'object_id': id, 'reply_comment_id': 0})
+    }
+    return render(request, 'found-item-details.html', context)
+
+
+def found_item_send_mail(request, id):
+    l_item = get_object_or_404(Item, id=id)
+    l_name = l_item.name
+    l_address = l_item.mail_address
+    message = "您在Lost&Found网站上所上传的 " + l_name + " 有了新动态"
+    send_mail('Lost&Found 失物提醒邮件', message, settings.EMAIL_FROM,
+    [l_address], fail_silently=False)
+
+    return render(request, 'found_item_mail.html')

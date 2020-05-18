@@ -2,6 +2,8 @@ from django.db import models
 from home.models import MyUser
 # Create your models here.
 from tag.models import Tag
+from django.urls import reverse
+
 
 class Item(models.Model):
     status = models.CharField(max_length=50)
@@ -25,9 +27,15 @@ class Item(models.Model):
 
     tmp_slug=models.CharField(max_length=30,default='')
 
-    def save(self,*args,**kwargs):
-        self.tmp_slug=self.tag.slug
-        super(Item,self).save(*args,**kwargs)
+    def save(self, *args, **kwargs):
+        self.tmp_slug = self.tag.slug
+        super(Item, self).save(*args, **kwargs)
+
+#   def get_url(self):
+#      return reverse('lost_item', kwargs={'comment_pk': self.pk})
+
+    def get_mail(self):
+        return self.mail_address
 
     def __str__(self):
         return self.status

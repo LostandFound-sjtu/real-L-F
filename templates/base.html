@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/cropper.min.css' %}">
+    <!--评论所用，勿删-->
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    {% block header_extends %}{% endblock %}
+
 
     {% block stylesheet %}{% endblock stylesheet %}
 
@@ -199,6 +203,6 @@
     </script>
    {% endblock scripts %}
     <!-- End Moving Java Scripts Code -->
-
+{% block script_extends %}{% endblock %}
 </body>
 </html>

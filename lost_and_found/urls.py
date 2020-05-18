@@ -27,6 +27,8 @@ urlpatterns = [
     path('', include('lost.urls')),
     path('', include('home.urls')),
     path('', include('search.urls')),
+    path('ckeditor', include('ckeditor_uploader.urls')),
+    path('comment/', include('comment.urls')),
 ]
 
 if settings.DEBUG:
