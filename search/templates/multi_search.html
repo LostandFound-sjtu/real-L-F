@@ -6,17 +6,26 @@
 
 {% block title %} Multi-Choices Search {% endblock title %}
 {% block  content %}
-    <h3>选择:</h3>
-        <div>
-            {% for each in class_list %}
-                {%action current_url each 1%}
+
+
+
+    <div id="box">
+        <dl>
+        <!-- 每个类别都要单独做一个app 保证所有的遍历过程-->
+            <dt>类别：</dt>
+                {% for each in class_list %}
+               <dd id="dd">{%action current_url each 1%}</dd>
             {% endfor %}
-        </div>
-        <div>
+        </dl>
+        <dl>
+        <!-- 每个类别都要单独做一个app 保证所有的遍历过程-->
+            <dt>类别：</dt>
             {% for each in tag_list %}
-                {%action current_url each 2%}
+                <dd id="dd">{%action current_url each 2%}</dd>
             {%endfor%}
-        </div>
+
+        </dl>
+    <br>
 
     <h3>物品一览:</h3>
         {% for lI in item_list %}
