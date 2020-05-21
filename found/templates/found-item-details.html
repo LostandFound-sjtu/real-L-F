@@ -49,6 +49,7 @@
                 <h4><strong><pre>Contact info : {{ f_item.phone_number }}</pre></strong></h4>
                 <h4><strong><pre>Email address: {{ l_item.mail_address }}</pre></strong></h4>
                 <h4><strong><pre>Create by    : {{ f_item.user }}</pre></strong></h4>
+                <h4><strong><pre>Identification Info   : {{f_item.identification_mark}}</pre></strong></h4>
 
                 <!-- End Found Item Post Details -->
                 <a class="btn btn-info" href="{% url 'found_item_mail' id=f_item.id   %}">发送提醒邮件</a>
