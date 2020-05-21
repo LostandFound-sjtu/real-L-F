@@ -17,9 +17,9 @@ class Item(models.Model):
     location = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=16)
     mail_address = models.CharField(max_length=50, default='')
-    image = models.FileField()
-    identification_mark = models.TextField(help_text='Separate each item by comma')
-    secret_information = models.TextField(help_text='Separate each item by comma')
+    image = models.FileField(blank=True)
+    identification_mark = models.TextField(help_text='Separate each item by comma',blank=True)
+    secret_information = models.TextField(help_text='Separate each item by comma',blank=True)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
     timestamp = models.DateTimeField(auto_now_add=True)
