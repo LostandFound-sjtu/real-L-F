@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Person Delete || {{ block.super }} {% endblock %}
+
+{% block stylesheet %} {% endblock %}
+
+
+{% block content %}
+
+    <div class="offset-lg-3 col-lg-6">
+
+        <div style="text-align: center">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h2 style="text-align: center">确认要删除吗 {{ f_item_delete }}" ? </h2>
+            <input type="submit" class="btn btn-danger" value="是" />
+        </form>
+        </div>
+        <div style="margin-bottom: 180px"></div>
+
+    </div>
+
+{% endblock %}
+
+
+{% block script %} {% endblock %}
+

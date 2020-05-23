@@ -1,0 +1,116 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Home || {{ block.super }} {% endblock title %}
+
+{% load static %}
+
+{% load humanize %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <!-- Login  Message Framework -->
+        {% if messages %}
+             <div class="messages">
+                {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- End Login Message Framework -->
+    </div>
+
+
+    <!-- Main Sections -->
+    <div class="container">
+        <div align="center" >
+                    <br/>
+                    <img align="middle" class="img-fluid rounded" src="../static/img/1.jpg"alt="" style="width: 1150px" ; height="500px;">
+                    <p class="lead">上海交通大学失物招领平台</p>
+        </div>
+        
+            
+                <div class="col-md-12 col-lg-12">
+                    <br/>
+                    <h2 style="text-align: center">{{ i.status }}</h2>
+                    <img class="img-fluid rounded" src="../static/img/1.jpg"alt="" style="width: 1200px" ; height="500px;">
+                    <p class="lead">上海交通大学失物招领平台</p>
+                    <div class="article">
+                        <ul class="meta-post">
+                            <li><i class="fa fa-calendar"></i><a href="#">{{ i.update | naturaltime }}</a></li>
+                        </ul>
+        
+                    </div>
+                </div>
+           
+            <!-- End Recent Lost Post -->
+
+    </div>
+    <!-- End Main Sections -->
+
+    <br>
+    <br>
+
+    <!-- 展示最近丢失的东西 -->
+    <h1 class="my-3"  style="text-align: center">近期失物</h1>
+    <div class="container">
+            <!-- Lost Item -->
+            {% for li in lost_item %}
+                <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                    <div class="mb-4">
+                        <a href="{% url 'lost_item_details' li.id %}">
+                            <pre><img class="img-fluid" src="{{ li.image.url }}" alt="Sample image" style="width: 340px" ; height="300px;"></pre>
+                        </a>
+                    </div>
+                </div>
+                <!--detail section-->
+                <div class="col-lg-6 ">
+                    <h3><strong>{{ li.status }}</strong></h3>
+                    <h4><strong><pre>名称     : {{ li.name }}</pre></strong></h4>
+                    <h4><strong><pre>地点     : {{ li.location }}</pre></strong></h4>
+                    <h4><strong><pre>时间     : {{ li.update | naturaltime }}</pre></strong></h4>
+                    <h4><strong><pre>上传人   : {{ li.user.username }}</pre></strong></h4>
+                    <a href="{% url 'lost_item_details' li.id %}" class="btn btn-primary btn-md">了解详情</a>
+                </div>
+                </div>
+                <br/>
+            {% endfor %}
+    </div>
+
+
+    <br>
+    <!-- 展示最近发现的东西 -->
+    <h1 class="my-3"  style="text-align: center">近期拾物</h1>
+    <div class="container">
+            <!-- Lost Item -->
+            {% for li in recent_found_item %}
+                <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                    <div class="mb-4">
+                        <a href="{% url 'found_item_details' li.id %}">
+                            <pre><img class="img-fluid" src="{{ li.image.url }}" alt="Sample image" style="width: 340px" ; height="300px;"></pre>
+                        </a>
+                    </div>
+                </div>
+                <!--detail section-->
+                <div class="col-lg-6 ">
+                    <h3><strong>{{ li.status }}</strong></h3>
+                    <h4><strong><pre>名称     : {{ li.name }}</pre></strong></h4>
+                    <h4><strong><pre>地点     : {{ li.location }}</pre></strong></h4>
+                    <h4><strong><pre>时间     : {{ li.update | naturaltime }}</pre></strong></h4>
+                    <h4><strong><pre>上传人   : {{ li.user.username }}</pre></strong></h4>
+                    <a href="{% url 'found_item_details' li.id %}" class="btn btn-primary btn-md">了解详情</a>
+                </div>
+                </div>
+                <br/>
+            {% endfor %}
+    </div>
+
+{% endblock content %}
+

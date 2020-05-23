@@ -1,0 +1,56 @@
+
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% load humanize %}
+
+{% block title %} Found Post || {{ block.super }} {% endblock title %}
+
+
+{% block  content %}
+
+    <!-- Message Framework -->
+
+
+    <div id="box">
+        <dl>
+        <!-- 每个类别都要单独做一个app 保证所有的遍历过程-->
+            <dt>类别：</dt>
+            {% for kind in all_tag %}
+                 <dd id="dd">{{kind.name}}</dd>
+            {% endfor %}
+        </dl>
+        <dl class="select" style="border-bottom-width: 0px;">
+            <dt>已选条件：</dt>
+        </dl>
+    <br>
+
+    </div>
+    <div id="div1">
+
+    </div>
+
+    <div class="container-fluid">
+        {% if messages %}
+             <div class="messages">
+                {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <!-- End Message Framework -->
+
+    <div class="container-fluid">
+        <h4 style="text-align: center">All Found Post Here</h4>
+    </div>
+    <br>
+    <br>
+
+{% endblock content %}
+
+
+

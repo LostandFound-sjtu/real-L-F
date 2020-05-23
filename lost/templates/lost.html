@@ -1,0 +1,37 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% load humanize %}
+
+
+{% block title %} Lost Post || {{ block.super }} {% endblock title %}
+
+{% block  content %}
+
+    <!-- 标签栏目 -->
+    <!-- 下面要开始写标签栏目了-->
+    <!-- 成功显示了所有的标签 -->
+     <!-- 显示图形的模块 -->
+    <br>
+    <br>
+    <div id="box">
+        <dl>
+        <!-- 每个类别都要单独做一个app 保证所有的遍历过程-->
+            <dt>类别：</dt>
+            {% for kind in all_tag %}
+                 <dd id="dd">{{kind.name}}</dd>
+
+            {% endfor %}
+        </dl>
+        <dl class="select" style="border-bottom-width: 0px;">
+            <dt>已选条件：</dt>
+        </dl>
+    <br>
+
+    </div>
+    <div id="div1">
+
+    </div>
+
+{% endblock content %}
