@@ -44,19 +44,21 @@
                 <br>
                 <br>
                 <!-- Post Content -->
-                <h4><strong><pre>Status       : {{ f_item.status }}</pre></strong></h4>
-                <h4><strong><pre>Item Name    : {{ f_item.name }} </pre></strong></h4>
-                <h4><strong><pre>Tag Name     : {{ l_item.tag  }}</pre></strong></h4>
-                <h4><strong><pre>Location     : {{ f_item.location }}</pre></strong></h4>
-                <h4><strong><pre>Contact info : {{ f_item.phone_number }}</pre></strong></h4>
-                <h4><strong><pre>Email address: {{ l_item.mail_address }}</pre></strong></h4>
-                <h4><strong><pre>Create by    : {{ f_item.user }}</pre></strong></h4>
-                <h4><strong><pre>Identification Info   : {{f_item.identification_mark}}</pre></strong></h4>
+                <h4><strong><pre>目前状态  : {{ f_item.status }}</pre></strong></h4>
+                <h4><strong><pre>物品名称  : {{ f_item.name }} </pre></strong></h4>
+                <h4><strong><pre>标签名称  : {{ l_item.tag  }}</pre></strong></h4>
+                <h4><strong><pre>地点      : {{ f_item.location }}</pre></strong></h4>
+                <h4><strong><pre>联络方式  : {{ f_item.phone_number }}</pre></strong></h4>
+                <h4><strong><pre>Email地址 : {{ l_item.mail_address }}</pre></strong></h4>
+                <h4><strong><pre>创建者    : {{ f_item.user }}</pre></strong></h4>
+                <h4><strong><pre>具体细节  : {{f_item.identification_mark}}</pre></strong></h4>
 
                 <!-- End Found Item Post Details -->
-                <a class="btn btn-info" href="{% url 'found_item_mail' id=f_item.id   %}">发送提醒邮件</a>
+                {% if user.username == "admin" %}
+                    <a class="btn btn-info" href="{% url 'found_item_mail' id=f_item.id   %}">发送提醒邮件</a>
+                {% endif %}
                 <!-- Update and Delete Post Section -->
-                {% if f_item.user == user %}
+                {% if f_item.user == user or user.username == "admin" %}
                     <a class="btn btn-success" href="{% url 'found_item_update' id=f_item.id   %}">更改</a>
                     <a class="btn btn-danger" href="{% url 'found_item_delete' id=f_item.id  %}">删除</a>
                 {% endif %}
