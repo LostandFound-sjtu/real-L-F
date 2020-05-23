@@ -17,8 +17,6 @@ class FoundItemModelForm(forms.ModelForm):
             'category',
             'location',
             'image',
-            'identification_mark',
-            'secret_information',
         ]
 
 #  tag类里面是有自动填充功能的emm

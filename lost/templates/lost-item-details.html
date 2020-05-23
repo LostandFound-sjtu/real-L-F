@@ -21,9 +21,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="offset-md-1 col-lg-10">
-                <h1 style="text-align: center">Lost Item Details</h1>
-                <img class="img-fluid rounded" src="{{ l_item.image.url }}" alt="">
+            <div class="col-lg-offset-1 col-lg-10">
+                <h1 style="text-align: center">失物详情</h1>
+                <div style="text-align: center">
+                    <img class="img-fluid rounded" src="{{ l_item.image.url }}" alt="" style="height:600px;">
+                </div>
                 <br>
                 <br>
                 <!-- Post Content -->
@@ -39,8 +41,8 @@
                 <a class="btn btn-info" href="{% url 'lost_item_mail' id=l_item.id   %}">发送提醒邮件</a>
                 <!-- Update and Delete Post Section -->
                  {% if l_item.user == user %}
-                    <a class="btn btn-success" href="{% url 'lost_item_update' id=l_item.id   %}">Update</a>
-                    <a class="btn btn-danger" href="{% url 'lost_item_delete' id=l_item.id  %}">Delete</a>
+                    <a class="btn btn-success" href="{% url 'lost_item_update' id=l_item.id   %}">更改</a>
+                    <a class="btn btn-danger" href="{% url 'lost_item_delete' id=l_item.id  %}">删除</a>
                 {% endif %}
                 <!-- End Contact Information -->
             </div>

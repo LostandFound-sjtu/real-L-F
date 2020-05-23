@@ -28,84 +28,10 @@
 
     <!-- Main Sections -->
     <div class="container">
-        <div class="row">
-            <!-- Recent Lost Post person and item-->
-            {% for i in last_post %}
-                <div class="col-md-8 col-lg-8">
+        <div align="center" >
                     <br/>
-                    <h2 style="text-align: center">{{ i.status }}</h2>
-                    <img class="img-fluid rounded" src="{{ i.image.url }}"alt="" style="width: 700px" ; height="300px;">
-                    <p class="lead">A little update on what's going on with Missing Information!</p>
-                    <div class="article">
-                        <ul class="meta-post">
-                            <li><i class="fa fa-calendar"></i><a href="#">{{ i.update | naturaltime }}</a></li>
-                        </ul>
-                        <a href="{% url 'lost' %}" class="pull-right"><strong>Continue reading </strong><i class="icon-angle-right"></i></a>
-                    </div>
-                </div>
-            {% endfor %}
-            <!-- End Recent Lost Post -->
-
-            <!-- 一些没啥用的框框 -->
-            <div class="col-md-4 col-lg-4">
-                <div class="card my-4 border-info">
-                    <h5 class="card-header text-center">Location</h5>
-                    <div class="card-body">
-                        <div class="row">
-                            <!-- Left Side -->
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li>
-                                        <a href="#">Dhaka</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Chattogram</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Sylhet</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Khulna</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Right Side -->
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li>
-                                        <a href="#">Barishal</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Rajshahi</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Rangpur</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Mymensingh</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- End Right Side bar -->
-                        </div>
-                    </div>
-                </div>
-                <!-- End Location Section-->
-
-               <!-- Category Section -->
-                <div class="card my-4 border-primary">
-                    <h5 class="card-header text-center">Reward Post</h5>
-                    <div class="card-body">
-                        {% for r in my_reward %}
-                            <p><strong>{{ r.text }}<br></strong></p>
-                        {% endfor %}
-                    </div>
-                </div>
-               <!-- End Category -->
-
-
-
-            </div>
+                    <img align="middle" class="img-fluid rounded" src="../static/img/1.jpg"alt="" style="width: 1150px" ; height="500px;">
+                    <p class="lead">上海交通大学失物招领平台</p>
         </div>
     </div>
     <!-- End Main Sections -->
@@ -113,66 +39,60 @@
     <br>
     <br>
 
-    <!-- 又是一些没啥用的框框 -->
-    <h2 class="my-3">Recent Lost Post</h2>
+    <!-- 展示最近丢失的东西 -->
+    <h1 class="my-3"  style="text-align: center">近期失物</h1>
     <div class="container">
-        <div class="row">
             <!-- Lost Item -->
             {% for li in lost_item %}
-                <div class="col-lg-4 col-xl-4">
+                <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
                     <div class="mb-4">
                         <a href="{% url 'lost_item_details' li.id %}">
-                            <img class="img-fluid" src="{{ li.image.url }}" alt="Sample image">
+                            <pre><img class="img-fluid" src="{{ li.image.url }}" alt="Sample image" style="width: 340px" ; height="300px;"></pre>
                         </a>
                     </div>
                 </div>
                 <!--detail section-->
-                <div class="col-lg-6 col-xl-6">
+                <div class="col-lg-6 ">
                     <h3><strong>{{ li.status }}</strong></h3>
-                    <h4><strong><pre>Name       : {{ li.name }}</pre></strong></h4>
-                    <h4><strong><pre>Location   : {{ li.location }}</pre></strong></h4>
-                    <h4><strong><pre>Updated    : {{ li.update | naturaltime }}</pre></strong></h4>
-                    <h4><strong><pre>Created by : {{ li.user.username }}</pre></strong></h4>
-                    <a href="{% url 'lost_item_details' li.id %}" class="btn btn-primary btn-md">Read more</a>
+                    <h4><strong><pre>名称     : {{ li.name }}</pre></strong></h4>
+                    <h4><strong><pre>地点     : {{ li.location }}</pre></strong></h4>
+                    <h4><strong><pre>时间     : {{ li.update | naturaltime }}</pre></strong></h4>
+                    <h4><strong><pre>上传人   : {{ li.user.username }}</pre></strong></h4>
+                    <a href="{% url 'lost_item_details' li.id %}" class="btn btn-primary btn-md">了解详情</a>
                 </div>
+                </div>
+                <br/>
             {% endfor %}
-
-        </div>
     </div>
 
 
     <br>
-    <!-- 展示最近发现的东西emm -->
-    <h2 style="text-align: center">See Found Post</h2>
-    <br>
+    <!-- 展示最近发现的东西 -->
+    <h1 class="my-3"  style="text-align: center">近期拾物</h1>
     <div class="container">
-        <div class="row">
-            <div class="table-responsive">
-                <table class="table table-hover">
-              <thead class="thead-light">
-                <tr>
-                    <th width="35%">Status</th>
-                    <th width="25%">Name</th>
-                    <th width="25%">Location</th>
-                    <th width="45%">Update Time</th>
-                </tr>
-              </thead>
-              <tbody>
-
-                {% for rI in recent_found_item %}
-                    <tr>
-                        <th>
-                            <a href="{% url 'found_item_details'  rI.id%}" target="_blank">{{ rI.status }}</a>
-                        </th>
-                        <td>{{ rI.name }}</td>
-                        <td>{{ rI.location }}</td>
-                        <td>{{ rI.update | naturaltime }}</td>
-                    </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-            </div>
-        </div>
+            <!-- Lost Item -->
+            {% for li in recent_found_item %}
+                <div class="row">
+                <div class="col-lg-4 col-lg-offset-1">
+                    <div class="mb-4">
+                        <a href="{% url 'found_item_details' li.id %}">
+                            <pre><img class="img-fluid" src="{{ li.image.url }}" alt="Sample image" style="width: 340px" ; height="300px;"></pre>
+                        </a>
+                    </div>
+                </div>
+                <!--detail section-->
+                <div class="col-lg-6 ">
+                    <h3><strong>{{ li.status }}</strong></h3>
+                    <h4><strong><pre>名称     : {{ li.name }}</pre></strong></h4>
+                    <h4><strong><pre>地点     : {{ li.location }}</pre></strong></h4>
+                    <h4><strong><pre>时间     : {{ li.update | naturaltime }}</pre></strong></h4>
+                    <h4><strong><pre>上传人   : {{ li.user.username }}</pre></strong></h4>
+                    <a href="{% url 'found_item_details' li.id %}" class="btn btn-primary btn-md">了解详情</a>
+                </div>
+                </div>
+                <br/>
+            {% endfor %}
     </div>
 
 {% endblock content %}

@@ -8,19 +8,12 @@ from .forms import RewardModeLForm
 # Home Page View
 
 def index(request):
-    # First Div
-    last_item_post = Item.objects.all()[:1]
-    # End First Div
-
     # 2nd Div
-    lost_item = Item.objects.filter(category="L").all()[:1]
+    lost_item = Item.objects.filter(category="L").all()[:3]
     # End 2 div
 
     # table
-    recent_item_item = Item.objects.filter(category="F").all()
-
-    # Reword Post
-    my_reward = Reward.objects.all()[:3]
+    recent_item_item = Item.objects.filter(category="F").all()[:3]
 
     # Found Post Count Post
     b = Item.objects.filter(category="F").all()
@@ -31,19 +24,13 @@ def index(request):
     context = {
 
         'lost_item': lost_item,
-
         'recent_found_item': recent_item_item,
-        'my_reward': my_reward,
 
         # Total Post Count
         'b': b,
         'd': d,
 
     }
-
-
-    context['last_post'] = last_item_post
-
     return render(request, 'index.html', context)
 
 
