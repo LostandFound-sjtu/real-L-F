@@ -93,8 +93,6 @@ def create_lost_item(request):
 
 
 
-# Lost Item Update
-
 @login_required(login_url='/login/')
 def lost_item_update(request, id):
     l_item_update = get_object_or_404(Item, id=id)
@@ -107,8 +105,6 @@ def lost_item_update(request, id):
         'form': form
     }
     return render(request, 'lost-form.html', context)
-
-# Lost Item Delete
 
 @login_required(login_url='/login/')
 def lost_item_delete(request, id):

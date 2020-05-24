@@ -3,14 +3,12 @@ from .forms import SignupModelForm
 from home.models import MyUser
 from django.contrib import messages
 
-# Create your views here.
 
 
 def get_signup(request):
     form = SignupModelForm(request.POST or request.FILES or None)
     if form .is_valid():
         instance = form.save(commit=False)
-        # Signup fields
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         username = request.POST.get('username')

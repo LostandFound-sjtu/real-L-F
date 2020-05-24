@@ -16,11 +16,11 @@
 
 {% block content %}
 <div style="margin:0 auto;width:50%">
-   <!-- Main Container -->
+
     <div class="container">
         <div class="row">
             <div class="offset-md-3 col-md-6 my-4">
-                <!-- Signup  Message Framework -->
+
                 {% if messages %}
                      <div class="messages">
                         {% for message in messages %}
@@ -30,11 +30,8 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-                 <!-- End Login Message Framework -->
 
 
-
-             <!-- Signup form -->
                 <div class="card">
                     <a href="{% url 'signup' %}" class="card-header text-center">还没有注册吗？</a>
                     <div class="card-body">
@@ -53,12 +50,10 @@
                         </form>
                     </div>
                 </div>
-                <!-- End Signup Form -->
 
             </div>
         </div>
     </div>
-    <!-- End Main Container -->
 
 </div>
 {% endblock %}
