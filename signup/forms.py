@@ -8,11 +8,8 @@ class SignupModelForm(forms.ModelForm):
         model = MyUser
 
         fields = [
-            'first_name',
-            'last_name',
             'username',
             'email',
-            'gender',
             'phone_number',
             'password'
         ]
