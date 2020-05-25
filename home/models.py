@@ -16,7 +16,7 @@ class MyUser(AbstractUser):
         ('F', 'FEMALE'),
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="M")
-    phone_number = models.CharField(max_length=15,blank=True)
+    phone_number = models.CharField(max_length=15,blank=True,verbose_name='电话号码')
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
 
