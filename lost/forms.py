@@ -9,7 +9,6 @@ class LostItemModelForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = [
-            'status',
             'name',
             'tag',
             'mail_address',
@@ -18,7 +17,6 @@ class LostItemModelForm(forms.ModelForm):
             'location',
             'image',
             'identification_mark',
-            'secret_information',
         ]
 
 

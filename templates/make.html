@@ -18,11 +18,10 @@
                             <img class="img-fluid" src="{{ fI.image.url }}" alt="抱歉，图片找不到了:(" style="width: 350px;height: 300px;"/>
                         </a>
                     </div>
-                    <p><strong>Status: {{ fI.status }}</strong></p>
-                    <p><strong>Item Name : {{ fI.name }} </strong></p>
-                    <p><strong>Location : {{ fI.location }}</strong></p>
-                    <p><strong>Updated Time : {{ fI.update }} </strong></p>
-                    <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'found_item_details'  fI.id %}" target="blank">Details</a>
+                    <p><strong>物品名称 : {{ fI.name }} </strong></p>
+                    <p><strong>地点 : {{ fI.location }}</strong></p>
+                    <p><strong>上传时间 : {{ fI.update }} </strong></p>
+                    <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'found_item_details'  fI.id %}" target="blank">点击查看更多细节</a>
                 </div>
 
             {% endfor %}
@@ -39,11 +38,10 @@
                             <img class="img-fluid" src="{{ lI.image.url }}" alt="抱歉，图片找不到了:(" style="width: 350px;height: 300px;"/>
                         </a>
                     </div>
-                    <p><strong>Status: {{ lI.status }}</strong></p>
-                    <p><strong>Name : {{ lI.name }} </strong></p>
-                    <p><strong>Location : {{ lI.location }}</strong></p>
-                    <p><strong>Updated Time : {{ lI.update }} </strong></p>
-                    <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">Details</a>
+                    <p><strong>物品名称 : {{ lI.name }} </strong></p>
+                    <p><strong>地点 : {{ lI.location }}</strong></p>
+                    <p><strong>上传时间 : {{ lI.update }} </strong></p>
+                    <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">点击查看更多细节</a>
                 </div>
             {% endfor %}
         {% endif %}

@@ -11,7 +11,7 @@ def multi_search(request, *args, **kwargs):
     request_path = request.path
     real_class_list = ['F', 'L']
     class_list = ['0', '1', '2']
-    tag_list = ['0', '1', '2', '3', '4']
+    tag_list = ['0', '1', '2', '3', '4','5','6','7','8','9']
     class_id = kwargs.get('class_id')
     tag_id = kwargs.get('tag_id')
     item_list = []
