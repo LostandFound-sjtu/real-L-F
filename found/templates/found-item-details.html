@@ -67,28 +67,6 @@
         </div>
     </div>
 
-    <!-- Related Post Here -->
-    <div class="container">
-        <h3 class="card-header">Related Found Post</h3>
-        <br/>
-        <div class="row">
-            {% for r in related_found_person %}
-                <div class="col-md-3">
-                    <figure class="animate-box">
-                        <a href="{% url 'found_person_details' r.id %}">
-                            <img src="{{ r.image.url }}" style="width: 180px; height: 150px" alt="Uh oh image not found" class="img-responsive"/>
-                        </a>
-                        <br>
-                        <a href="{% url 'found_person_details' r.id %}">
-                            <h4 class="fh5co-article-title animate-box">{{ r.name }}</h4>
-                        </a>
-                        <p>{{ r.location }}</p>
-                    </figure>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
- <!--End Related Post section-->
 
 
     <div class="row">

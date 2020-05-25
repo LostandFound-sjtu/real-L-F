@@ -18,12 +18,14 @@
         <dl>
         <!-- 每个类别都要单独做一个app 保证所有的遍历过程-->
             <dt>类别：</dt>
+            <div style="margin-bottom: 20px"></div>
             {% for kind in all_tag %}
                  <dd id="dd">{{kind.name}}</dd>
             {% endfor %}
         </dl>
         <dl class="select" style="border-bottom-width: 0px;">
             <dt>已选条件：</dt>
+            <div style="margin-bottom: 20px"></div>
         </dl>
     <br>
 
