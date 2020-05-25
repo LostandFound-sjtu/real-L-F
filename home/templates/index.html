@@ -58,9 +58,9 @@
                 <!--detail section-->
                 <div class="col-lg-6 ">
                     <h3><strong>{{ li.status }}</strong></h3>
-                    <h4><strong><pre>名称     : {{ li.name }}</pre></strong></h4>
+                    <h4><strong><pre>类型     : {{ li.tag }}</pre></strong></h4>
                     <h4><strong><pre>地点     : {{ li.location }}</pre></strong></h4>
-                    <h4><strong><pre>时间     : {{ li.update | naturaltime }}</pre></strong></h4>
+                    <h4><strong><pre>时间     : {{ li.update }}</pre></strong></h4>
                     <h4><strong><pre>上传人   : {{ li.user.username }}</pre></strong></h4>
                     <a href="{% url 'lost_item_details' li.id %}" class="btn btn-primary btn-md">了解详情</a>
                 </div>
@@ -87,9 +87,9 @@
                 <!--detail section-->
                 <div class="col-lg-6 ">
                     <h3><strong>{{ li.status }}</strong></h3>
-                    <h4><strong><pre>名称     : {{ li.name }}</pre></strong></h4>
+                    <h4><strong><pre>类型     : {{ li.tag }}</pre></strong></h4>
                     <h4><strong><pre>地点     : {{ li.location }}</pre></strong></h4>
-                    <h4><strong><pre>时间     : {{ li.update | naturaltime }}</pre></strong></h4>
+                    <h4><strong><pre>时间     : {{ li.update }}</pre></strong></h4>
                     <h4><strong><pre>上传人   : {{ li.user.username }}</pre></strong></h4>
                     <a href="{% url 'found_item_details' li.id %}" class="btn btn-primary btn-md">了解详情</a>
                 </div>
