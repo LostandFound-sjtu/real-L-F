@@ -52,7 +52,7 @@
     <link type="text/css" href="/static/css/style_tmp.css" rel="stylesheet" />
 
 </head>
-<body>
+<body> 
 <br>
 
 
@@ -84,9 +84,6 @@
                     <li></li>
                     <li></li>
 
-                    <li></li>
-                    <li></li>
-
                   {% endif %}
 
                      {% if not request.user.is_authenticated %}
@@ -99,14 +96,8 @@
                                 <a href="{% url 'login' %}" class="nav-link">登录</a>
                             </li>
                         {% else %}
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">账户<span class="caret"></span></a>
-                          <ul class="dropdown-menu" style="background-color: #343a40;">
-                              <li><a href="{% url 'reward' %}">感谢</a></li>
-                              <li class="divider"></li>
                               <li><a href="{% url 'logout' %}">登出</a></li>
-                          </ul>
-                      </li>
+
 
                         {% endif %}
               </ul>
@@ -120,7 +111,7 @@
     <br><br><br><br><br><br><br><br>
     <!-- Main Contain -->
     <div class="container">
-        <div class="row">
+        <div class="row ">
             {% block content %}
 
 

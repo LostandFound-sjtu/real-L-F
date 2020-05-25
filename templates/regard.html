@@ -18,16 +18,11 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/cropper.min.css' %}">
-    <!--评论所用，勿删-->
-    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
-    {% block header_extends %}{% endblock %}
-
 
     {% block stylesheet %}{% endblock stylesheet %}
 
     <title>{% block title %} Lost & Found {% endblock title %}</title>
-
-    <title>Carousel Template for Bootstrap</title>
+     <title>Carousel Template for Bootstrap</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" >
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -42,18 +37,21 @@
     <!-- Custom styles for this template -->
     <link href="/static/bootstrap/css/carousel.css" rel="stylesheet">
         <meta charset="utf-8">
-    <title>失物招领</title>
+    <title>三级导航</title>
 
     <link rel="stylesheet" type="text/css" href="/static/left-side-menu.css">
     <link rel="stylesheet" type="text/css" href="/static/fonts/iconfont.css">
+
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
     <script type="text/javascript" src="/static/js/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="/static/js/left-side-menu.js"></script>
-    <link type="text/css" href="/static/css/style_tmp.css" rel="stylesheet" />
 
+    <link type="text/css" href="/static/css/style_tmp.css" rel="stylesheet" />
 </head>
-<body> 
-<br>
+
+<body>
+
+    <br>
 
 
     <div class="navbar-wrapper">
@@ -107,118 +105,87 @@
     </div>
 
 
-    <br><br><br><br><br><br><br><br>
-    <!-- Main Contain -->
-    <div class="container">
-        <div class="row ">
-            {% block content %}
+        <!--End Navigation Bar-->
 
+    <br>
+
+    <div class="container">
+        <div class="row">
+            {% block content %}
 
 
             {% endblock content %}
         </div>
     </div>
-    <!-- End Contain -->
-
-    <div style="margin-bottom: 10px;"></div>
-
-      <!-- Footer bottom -->
-      <footer class="footer navbar-fixed-bottom ">
-      <div id="footer" class="midnight-blue">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <ul class="footer-menu">
-                        <li>
-                            <a href="https://www.facebook.com/jibon969/">
-                                <span class="fa fa-university"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">上海交通大学</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Footer left Side -->
-                <!-- Footer left Side -->
-
-                <!-- Footer Right Side -->
-                <div class="col-md-6 text-right copyright">
-                    Copyright &copy; Lost & Found. All Rights Reserved.
-                    <div class="credits">
-                        <a href="#">Design &amp; Development</a> by</a>
-                        <a href="https://github.com/jibon969/" target="blank">test</a>
-                    </div>
-                </div>
-                <!-- End Footer Right Side -->
-            </div>
-        </div>
-    </div>
-</footer>
-<!----- End Footer -->
 
 
 
-    <!-- Java Scripts Library -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script>
-        new WOW().init();
-    </script>
-    <script src="{% static 'js/wow.min.js' %}"></script>
-    <script src="{% static 'js/anime.min.js' %}"></script>
-    <script src="{% static 'js/cropper.min.js' %}"></script>
+    <script src="/static/bootstrap/jquery-2.1.4.min.js"></script>
+     <script src="/static/bootstrap/js/bootstrap.js"></script>
 
-    {% block scripts %}
-    <!-- Moving Java Scripts Code -->
-    <script >
-        anime.timeline({loop: true})
-          .add({
-            targets: '.ml5 .line',
-            opacity: [0.5,1],
-            scaleX: [0, 1],
-            easing: "easeInOutExpo",
-            duration: 700
-          }).add({
-            targets: '.ml5 .line',
-            duration: 600,
-            easing: "easeOutExpo",
-            translateY: function(e, i, l) {
-              var offset = -0.625 + 0.625*2*i;
-              return offset + "em";
-            }
-          }).add({
-            targets: '.ml5 .ampersand',
-            opacity: [0,1],
-            scaleY: [0.5, 1],
-            easing: "easeOutExpo",
-            duration: 600,
-            offset: '-=600'
-          }).add({
-            targets: '.ml5 .letters-left',
-            opacity: [0,1],
-            translateX: ["0.5em", 0],
-            easing: "easeOutExpo",
-            duration: 600,
-            offset: '-=300'
-          }).add({
-            targets: '.ml5 .letters-right',
-            opacity: [0,1],
-            translateX: ["-0.5em", 0],
-            easing: "easeOutExpo",
-            duration: 600,
-            offset: '-=600'
-          }).add({
-            targets: '.ml5',
-            opacity: 0,
-            duration: 1000,
-            easing: "easeOutExpo",
-            delay: 1000
-          });
-    </script>
-   {% endblock scripts %}
-    <!-- End Moving Java Scripts Code -->
+    <script src="/static/js/script.js"></script>
+   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+ <!-- Java Scripts Library -->
+ <script src="{% static 'js/jquery.min.js' %}"></script>
+ <script src="{% static 'js/popper.min.js' %}"></script>
+ <script src="{% static 'js/bootstrap.min.js' %}"></script>
+ <script>
+     new WOW().init();
+ </script>
+ <script src="{% static 'js/wow.min.js' %}"></script>
+ <script src="{% static 'js/anime.min.js' %}"></script>
+ <script src="{% static 'js/cropper.min.js' %}"></script>
+
+ {% block scripts %}
+ <!-- Moving Java Scripts Code -->
+ <script >
+     anime.timeline({loop: true})
+       .add({
+         targets: '.ml5 .line',
+         opacity: [0.5,1],
+         scaleX: [0, 1],
+         easing: "easeInOutExpo",
+         duration: 700
+       }).add({
+         targets: '.ml5 .line',
+         duration: 600,
+         easing: "easeOutExpo",
+         translateY: function(e, i, l) {
+           var offset = -0.625 + 0.625*2*i;
+           return offset + "em";
+         }
+       }).add({
+         targets: '.ml5 .ampersand',
+         opacity: [0,1],
+         scaleY: [0.5, 1],
+         easing: "easeOutExpo",
+         duration: 600,
+         offset: '-=600'
+       }).add({
+         targets: '.ml5 .letters-left',
+         opacity: [0,1],
+         translateX: ["0.5em", 0],
+         easing: "easeOutExpo",
+         duration: 600,
+         offset: '-=300'
+       }).add({
+         targets: '.ml5 .letters-right',
+         opacity: [0,1],
+         translateX: ["-0.5em", 0],
+         easing: "easeOutExpo",
+         duration: 600,
+         offset: '-=600'
+       }).add({
+         targets: '.ml5',
+         opacity: 0,
+         duration: 1000,
+         easing: "easeOutExpo",
+         delay: 1000
+       });
+ </script>
+{% endblock scripts %}
+ <!-- End Moving Java Scripts Code -->
 {% block script_extends %}{% endblock %}
 </body>
 </html>

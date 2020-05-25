@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'regard.html' %}
 
 {%load my_tags%}
 {%load static%}
@@ -6,9 +6,6 @@
 
 {% block title %} Multi-Choices Search {% endblock title %}
 {% block  content %}
-
-
-
     <div id="box">
         <dl>
         <!-- 每个类别都要单独做一个app 保证所有的遍历过程-->
@@ -49,6 +46,7 @@
                 <p><strong>Location : {{ lI.location }}</strong></p>
                 <a class="btn btn-info btn-rounded btn-block mb-4" href="{% url 'lost_item_details' lI.id %}" target="blank">Details</a>
             </div>
+            <div style="margin-bottom: 10px;"></div>
+        <!-- End Lost Section -->
         {% endfor %}
-
 {% endblock content %}

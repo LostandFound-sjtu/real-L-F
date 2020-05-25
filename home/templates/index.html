@@ -11,38 +11,33 @@
 
 {% block content %}
 
-    <div class="container">
-<<<<<<< HEAD
+    <div class="container-fluid">
+        <!-- Login  Message Framework -->
+        {% if messages %}
+             <div class="messages">
+                {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- End Login Message Framework -->
+    </div>
 
-=======
->>>>>>> e94b0c35046f04a1ca04b3fab1b21d59d59fb29b
+
+    <!-- Main Sections -->
+    <div class="container">
         <div align="center" >
                     <br/>
                     <img align="middle" class="img-fluid rounded" src="../static/img/1.jpg"alt="" style="width: 1150px" ; height="500px;">
                     <p class="lead">上海交通大学失物招领平台</p>
         </div>
-<<<<<<< HEAD
-
-        
-            
-                <div class="col-md-12 col-lg-12">
-                    <br/>
-                    <h2 style="text-align: center">{{ i.status }}</h2>
-                    <img class="img-fluid rounded" src="../static/img/1.jpg"alt="" style="width: 1200px" ; height="500px;">
-                    <p class="lead">上海交通大学失物招领平台</p>
-                    <div class="article">
-                        <ul class="meta-post">
-                            <li><i class="fa fa-calendar"></i><a href="#">{{ i.update | naturaltime }}</a></li>
-                        </ul>
-        
-                    </div>
-                </div>
-=======
            
             <!-- End Recent Lost Post -->
->>>>>>> e94b0c35046f04a1ca04b3fab1b21d59d59fb29b
 
     </div>
+    <!-- End Main Sections -->
 
     <br>
     <br>
@@ -60,7 +55,7 @@
                         </a>
                     </div>
                 </div>
-
+                <!--detail section-->
                 <div class="col-lg-6 ">
                     <h3><strong>{{ li.status }}</strong></h3>
                     <h4><strong><pre>名称     : {{ li.name }}</pre></strong></h4>
@@ -79,7 +74,7 @@
     <!-- 展示最近发现的东西 -->
     <h1 class="my-3"  style="text-align: center">近期拾物</h1>
     <div class="container">
-
+            <!-- Lost Item -->
             {% for li in recent_found_item %}
                 <div class="row">
                 <div class="col-lg-4 col-lg-offset-1">
@@ -89,7 +84,7 @@
                         </a>
                     </div>
                 </div>
-
+                <!--detail section-->
                 <div class="col-lg-6 ">
                     <h3><strong>{{ li.status }}</strong></h3>
                     <h4><strong><pre>名称     : {{ li.name }}</pre></strong></h4>

@@ -28,19 +28,6 @@
                 </div>
                 <br>
                 <br>
-<<<<<<< HEAD
-                <h4><strong><pre>Status       : {{ l_item.status }}</pre></strong></h4>
-                <h4><strong><pre>Item Name    : {{ l_item.name }} </pre></strong></h4>
-                <h4><strong><pre>Tag Name     : {{ l_item.tag  }}</pre></strong></h4>
-                <h4><strong><pre>Location     : {{ l_item.location }}</pre></strong></h4>
-                <h4><strong><pre>Contact info : {{ l_item.phone_number }}</pre></strong></h4>
-                <h4><strong><pre>Email address: {{ l_item.mail_address }}</pre></strong></h4>
-                <h4><strong><pre>Create by    : {{ l_item.user }}</pre></strong></h4>
-                <h4><strong><pre>Identification Info   : {{l_item.identification_mark}}</pre></strong></h4>
-
-                <a class="btn btn-info" href="{% url 'lost_item_mail' id=l_item.id   %}">发送提醒邮件</a>
-                 {% if l_item.user == user %}
-=======
                 <!-- Post Content -->
                 <h4><strong><pre>目前状态  : {{ l_item.status }}</pre></strong></h4>
                 <h4><strong><pre>物品名称  : {{ l_item.name }} </pre></strong></h4>
@@ -57,13 +44,14 @@
                 {% endif %}
                 <!-- Update and Delete Post Section -->
                  {% if l_item.user == user or user.username == "admin" %}
->>>>>>> e94b0c35046f04a1ca04b3fab1b21d59d59fb29b
                     <a class="btn btn-success" href="{% url 'lost_item_update' id=l_item.id   %}">更改</a>
                     <a class="btn btn-danger" href="{% url 'lost_item_delete' id=l_item.id  %}">删除</a>
                 {% endif %}
+                <!-- End Contact Information -->
             </div>
         </div>
     </div>
+ <!--End Related Post section-->
 
 
 
