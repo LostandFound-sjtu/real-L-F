@@ -12,7 +12,7 @@
 
         <form action="" method="POST">
             {% csrf_token %}
-            <h2 style="text-align: center">确认要删除吗 {{ f_item_delete }}" ? </h2>
+            <h2 style="text-align: center">确认要删除 {{ l_item_delete }} 吗 ? </h2>
             <br>
             <div class="col-lg-offset-4 col-lg-1">
                 <input type="submit" class="btn btn-danger" value="是" />
