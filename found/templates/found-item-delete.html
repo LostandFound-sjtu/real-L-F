@@ -28,17 +28,24 @@
         </div>
         <!-- End Message Framework -->
 
-    <div class="offset-md-3 col-md-6 my-5">
+    <div class="col-lg-offset-3 col-lg-6">
 
         <form action="" method="POST">
             {% csrf_token %}
-            <h2 style="text-align: center">Are you sure you want to delete {{ fi_delete }}" ? </h2>
-            <input type="submit" class="btn btn-danger" value="Yes" />
+            <h2 style="text-align: center">确认要删除 {{ fi_delete }} 吗? </h2>
+            <br>
+            <div class="col-lg-offset-4 col-lg-1">
+                <input type="submit" class="btn btn-danger" value="是" />
+            </div>
+            <div class="col-lg-offset-1 col-lg-1">
+                <a href="{% url 'found_item_details' id=id %}">
+                    <button type="button" class="btn btn-primary">否</button>
+                </a>
+            </div>
         </form>
-        <div style="margin-bottom: 180px"></div>
+        <div style="margin-bottom: 320px"></div>
 
     </div>
-
 {% endblock %}
 
 

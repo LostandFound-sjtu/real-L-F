@@ -10,6 +10,8 @@ import threading
 # Create your models here.
 
 
+# 使用python自带的多线程模块theading
+# 功能是将send email行为异步执行，评论时不会产生延迟
 class SendMail(threading.Thread):
     def __init__(self, subject, text, email, fail_silently=False):
         self.subject = subject
@@ -56,10 +58,9 @@ class ItemComment(models.Model):
             # print('email ok')
         else:
             # 回复评论
-            # print('nmd,wsm')
             return
             
-        if email != '':
+        if email != '':  # 测试用逻辑，实际不会出现空值
             context = {}
             context['comment_text'] = self.text
             # context['url'] = self.content_object.get_url()

@@ -9,7 +9,6 @@ class LostItemModelForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = [
-            'status',
             'name',
             'tag',
             'mail_address',
@@ -18,13 +17,12 @@ class LostItemModelForm(forms.ModelForm):
             'location',
             'image',
             'identification_mark',
-            'secret_information',
         ]
 
 
 class TagForm(forms.ModelForm):
     name=forms.CharField(max_length=128)
-    slug=forms.CharField(widget=forms.HiddenInput(),required=False)
+    #slug=forms.CharField(widget=forms.HiddenInput(),required=False)
 
     class Meta:
         model = Tag
