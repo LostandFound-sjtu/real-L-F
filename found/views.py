@@ -101,7 +101,8 @@ def found_item_delete(request, id):
         messages.add_message(request, messages.WARNING, 'Delete successfully complete')
         return redirect('found')
     context = {
-        'fi_delete': fi_delete
+        'fi_delete': fi_delete,
+        'id': id
     }
     return render(request, 'found-item-delete.html', context)
 
@@ -127,5 +128,8 @@ def found_item_send_mail(request, id):
     message = "您在Lost&Found网站上所上传的 " + l_name + " 有了新动态"
     send_mail('Lost&Found 失物提醒邮件', message, settings.EMAIL_FROM,
     [l_address], fail_silently=False)
+    context={
+        'id' :id
+    }
 
-    return render(request, 'found_item_mail.html')
+    return render(request, 'found_item_mail.html',context)
