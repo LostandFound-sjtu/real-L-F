@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from home.models import Reward
+
 from item.models import Item
-from .forms import RewardModeLForm
+
 # Create your views here.
 
 
@@ -36,17 +36,3 @@ def index(request):
 
 # Reward Function
 
-def reward(request):
-    if request.method == 'POST':
-        form = RewardModeLForm(request.POST or None)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            return redirect('index')
-    else:
-        form = RewardModeLForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'reward.html', context)

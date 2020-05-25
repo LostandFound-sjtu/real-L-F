@@ -27,10 +27,4 @@ class MyUser(AbstractUser):
         ordering = ["-update"]
 
 
-class Reward(models.Model):
-    text = models.CharField(max_length=50)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    update = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.text
