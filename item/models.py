@@ -34,6 +34,7 @@ class Item(models.Model):
 #   def get_url(self):
 #      return reverse('lost_item', kwargs={'comment_pk': self.pk})
 
+#   该方法返回物品的邮件地址属性，用于评论提醒功能
     def get_mail(self):
         return self.mail_address
 
