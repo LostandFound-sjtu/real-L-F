@@ -28,7 +28,7 @@ class Item(models.Model):
     tmp_slug=models.CharField(max_length=30,default='')
 
     def save(self, *args, **kwargs):
-        self.tmp_slug = self.tag.slug
+        self.tmp_slug = self.tag.name
         super(Item, self).save(*args, **kwargs)
 
 #   def get_url(self):

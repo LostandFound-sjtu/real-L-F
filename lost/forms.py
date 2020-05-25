@@ -24,7 +24,7 @@ class LostItemModelForm(forms.ModelForm):
 
 class TagForm(forms.ModelForm):
     name=forms.CharField(max_length=128)
-    slug=forms.CharField(widget=forms.HiddenInput(),required=False)
+    #slug=forms.CharField(widget=forms.HiddenInput(),required=False)
 
     class Meta:
         model = Tag
