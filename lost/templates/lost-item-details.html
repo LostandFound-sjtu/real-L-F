@@ -166,7 +166,7 @@
                 $('#reply_content').html(html);
                 $('#reply_content_container').show();
 
-                $('html').animate({scrollTop: $('#comment_form').offset().top - 60}, 300, function(){
+                $('html,body').animate({scrollTop: $('#comment_form').offset().top - 60}, 300, function(){
                     CKEDITOR.instances['id_text'].focus();
                 });
             }
