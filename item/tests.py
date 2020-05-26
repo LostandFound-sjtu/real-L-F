@@ -27,7 +27,9 @@ class ItemTest(TestCase):
                             tag = Tag.objects.get(name = '手机')
                             )
                       
-
+    
+    # 测试返回mail方法是否正常
+    
     def test_email_successful(self):
         item1 = Item.objects.get(name='phone')
         mail = item1.get_mail()
