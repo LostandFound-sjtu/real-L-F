@@ -43,6 +43,7 @@
     <br>
 
     <!-- 展示最近丢失的东西 -->
+   {% if user.is_authenticated %}
     <h1 class="my-3"  style="text-align: center">近期失物</h1>
     <div class="container">
             <!-- Lost Item -->
@@ -68,6 +69,7 @@
                 <br/>
             {% endfor %}
     </div>
+
 
 
     <br>
@@ -97,6 +99,7 @@
                 <br/>
             {% endfor %}
     </div>
+    {% endif %}
 
 {% endblock content %}
 
