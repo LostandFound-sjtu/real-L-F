@@ -1,4 +1,4 @@
-
+<!--引入库文件和模板-->
 {% extends 'master.html' %}
 
 {% load widget_tweaks %}
@@ -15,9 +15,9 @@
 
 
 {% block content %}
-<div style="margin:0 auto;width:50%">
+<div style="margin:0 auto;width:50%"><!--设定组件自适应-->
    <!-- Main Container -->
-    <div class="container">
+    <div class="container"><!--登录信息-->
         <div class="row">
             <div class="offset-md-3 col-md-6 my-4">
                 <!-- Signup  Message Framework -->
@@ -25,7 +25,7 @@
                      <div class="messages">
                         {% for message in messages %}
                         <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button><!--按钮参数设定-->
                         </div>
                         {% endfor %}
                     </div>
@@ -35,12 +35,13 @@
 
 
              <!-- Signup form -->
-                <div class="card">
+                <div class="card"><!--此处询问用户是否注册过，如果没注册过将直接转到注册页面-->
                     <a href="{% url 'signup' %}" class="card-header text-center">还没有注册吗？</a>
                     <div class="card-body">
                         <h3 class="" style="text-align: center">登录账户</h3>
                         <form action="" method="POST" novalidate>
                             {% csrf_token %}
+                            <!--需要填写的表单信息-->
                             <div class="form-group">
                                 <label for="exampleInputUsername">用户名</label>
                                 <input type="text" name="user" class="form-control" id="exampleInputUsername" placeholder="用户名"/>
