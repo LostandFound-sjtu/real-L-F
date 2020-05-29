@@ -35,11 +35,11 @@ class ItemComment(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.DO_NOTHING, default=0)
     object_id = models.PositiveIntegerField(default=0)
     content_object = GenericForeignKey('content_type', 'object_id')
-
+    #用户评论
     text = models.TextField(default=0)
     comment_time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(MyUser, related_name="comments", on_delete=models.DO_NOTHING, default=0)
-
+    #用户回复
     root = models.ForeignKey('self', related_name='root_comment', null=True, on_delete=models.DO_NOTHING)
     parent = models.ForeignKey('self', related_name='parent_comment', null=True, on_delete=models.DO_NOTHING)
     reply_to = models.ForeignKey(MyUser, related_name="replies", null=True, on_delete=models.DO_NOTHING)

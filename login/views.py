@@ -10,6 +10,7 @@ def get_login(request):
     if request.user.is_authenticated:   # 用户已经登陆
         return redirect('index')        # home页面
     else:
+        error_msg=''
         if request.method == "POST":
             user = request.POST.get('user')
             password = request.POST.get('pass')
@@ -19,8 +20,10 @@ def get_login(request):
                 messages.add_message(request, messages.INFO, 'Login successfully complete')
                 # 在处理表单或其他类型的用户输入后向用户显示一次性通知消息，需要手动x掉
                 return redirect('index')
-            # 这里没有写else，所以不输入或输错只是刷新当前界面
-    return render(request, "login.html")
+            if auth is None:
+                error_msg = '用户名或密码错误'
+
+        return render(request, "login.html", {'error_msg': error_msg})
 # render必需的参数¶
 # request
 # 用于生成此响应的请求对象。

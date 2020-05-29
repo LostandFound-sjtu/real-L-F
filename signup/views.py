@@ -22,6 +22,6 @@ def get_signup(request):
 
         user.set_password(password)
         user.save()
-        messages.add_message(request, messages.SUCCESS, 'Registration successfully complete')
+        messages.add_message(request, messages.SUCCESS, '成功注册')
         return redirect('login')
     return render(request, 'signup.html', {"form": form})
