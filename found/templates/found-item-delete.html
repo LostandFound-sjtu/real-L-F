@@ -1,5 +1,5 @@
 
-{% extends 'base.html' %}
+{% extends 'master.html' %}
 
 {% load static %}
 
@@ -14,20 +14,7 @@
 
 {% block content %}
 
-         <!-- Message Framework -->
-        <div class="container-fluid">
-            {% if messages %}
-                 <div class="messages">
-                    {% for message in messages %}
-                    <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button>
-                    </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-        <!-- End Message Framework -->
-
+    <!-- 删除栏 -->
     <div class="col-lg-offset-3 col-lg-6">
 
         <form action="" method="POST">
