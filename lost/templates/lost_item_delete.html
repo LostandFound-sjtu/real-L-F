@@ -1,5 +1,5 @@
 
-{% extends 'base.html' %}
+{% extends 'master.html' %}
 
 {% block title %} Person Delete || {{ block.super }} {% endblock %}
 
@@ -8,6 +8,7 @@
 
 {% block content %}
 
+    <!-- 删除栏 -->
     <div class="col-lg-offset-3 col-lg-6">
 
         <form action="" method="POST">
@@ -18,7 +19,7 @@
                 <input type="submit" class="btn btn-danger" value="是" />
             </div>
             <div class="col-lg-offset-1 col-lg-1">
-                <a href="{% url 'lost_item_details' id=id' %}">
+                <a href="{% url 'lost_item_details' id=id %}">
                     <button type="button" class="btn btn-primary">否</button>
                 </a>
             </div>
