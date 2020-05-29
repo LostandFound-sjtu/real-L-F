@@ -18,8 +18,7 @@ class Item(models.Model):
     phone_number = models.CharField(max_length=16, verbose_name='手机号码')
     mail_address = models.CharField(max_length=50, default='', verbose_name='Email地址')
     image = models.FileField(blank=True, verbose_name='图片')
-    identification_mark = models.TextField(help_text='Separate each item by comma',blank=True, verbose_name='具体信息')
-    secret_information = models.TextField(help_text='Separate each item by comma',blank=True)
+    identification_mark = models.TextField(blank=True, verbose_name='具体信息')
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, verbose_name='标签')
 
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -30,9 +29,6 @@ class Item(models.Model):
     def save(self, *args, **kwargs):
         self.tmp_slug = self.tag.name
         super(Item, self).save(*args, **kwargs)
-
-#   def get_url(self):
-#      return reverse('lost_item', kwargs={'comment_pk': self.pk})
 
 #   该方法返回物品的邮件地址属性，用于评论提醒功能
     def get_mail(self):
@@ -46,7 +42,3 @@ class Item(models.Model):
 
     def get_contents(self):
         return self.identification_mark.split(",")
-
-    def get_excludes(self):
-        return self.secret_information.split(",")
-
