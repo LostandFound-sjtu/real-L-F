@@ -17,8 +17,7 @@ class Item(models.Model):
     phone_number = models.CharField(max_length=16, verbose_name='手机号码')
     mail_address = models.CharField(max_length=50, default='', verbose_name='Email地址')
     image = models.FileField(blank=True, verbose_name='图片')
-    identification_mark = models.TextField(help_text='Separate each item by comma',blank=True, verbose_name='具体信息')
-    secret_information = models.TextField(help_text='Separate each item by comma',blank=True)
+    identification_mark = models.TextField(blank=True, verbose_name='具体信息')
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, verbose_name='标签')
 
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -45,7 +44,3 @@ class Item(models.Model):
 
     def get_contents(self):
         return self.identification_mark.split(",")
-
-    def get_excludes(self):
-        return self.secret_information.split(",")
-
