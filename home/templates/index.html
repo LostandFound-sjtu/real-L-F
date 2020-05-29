@@ -1,4 +1,5 @@
 
+<!--引入模板和库文件-->
 {% extends 'base.html' %}
 
 {% block title %} Home || {{ block.super }} {% endblock title %}
@@ -11,13 +12,13 @@
 
 {% block content %}
 
-    <div class="container-fluid">
+    <div class="container-fluid"><!--登录组件-->
         <!-- Login  Message Framework -->
         {% if messages %}
-             <div class="messages">
+             <div class="messages"><!--登录信息-->
                 {% for message in messages %}
                 <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">X</span></button><!--按钮组件-->
                 </div>
                 {% endfor %}
             </div>
@@ -27,11 +28,11 @@
 
 
     <!-- Main Sections -->
-    <div class="container">
+    <div class="container"><!--首页图文件-->
         <div align="center" >
                     <br/>
-                    <img align="middle" class="img-fluid rounded" src="../static/img/1.jpg"alt="" style="width: 1150px" ; height="500px;">
-                    <p class="lead">上海交通大学失物招领平台</p>
+                    <img align="middle" class="img-fluid rounded" src="../static/img/1.jpg"alt="" style="width: 1150px" ; height="500px;"><!--设定图片参数-->
+                    <p class="lead">上海交通大学失物招领平台</p><!--标题-->
         </div>
            
             <!-- End Recent Lost Post -->
@@ -44,7 +45,7 @@
 
     <!-- 展示最近丢失的东西 -->
    {% if user.is_authenticated %}
-    <h1 class="my-3"  style="text-align: center">近期失物</h1>
+    <h1 class="my-3"  style="text-align: center">近期失物</h1><!--居中显示失物标题-->
     <div class="container">
             <!-- Lost Item -->
             {% for li in lost_item %}
@@ -82,12 +83,13 @@
                 <div class="col-lg-4 col-lg-offset-1">
                     <div class="mb-4">
                         <a href="{% url 'found_item_details' li.id %}">
-                            <pre><img class="img-fluid" src="{{ li.image.url }}" alt="Sample image" style="width: 340px" ; height="300px;"></pre>
+                            <pre><img class="img-fluid" src="{{ li.image.url }}" alt="Sample image" style="width: 340px" ; height="300px;">
+                            </pre><!--图片参数-->
                         </a>
                     </div>
                 </div>
                 <!--detail section-->
-                <div class="col-lg-6 ">
+                <div class="col-lg-6 "><!--表单信息显示-->
                     <h3><strong>{{ li.status }}</strong></h3>
                     <h4><strong><pre>类型     : {{ li.tag }}</pre></strong></h4>
                     <h4><strong><pre>地点     : {{ li.location }}</pre></strong></h4>
