@@ -23,7 +23,7 @@ class SendMail(threading.Thread):
     def run(self):
         send_mail(
             self.subject,
-            '您收到的新评论： /n',
+            self.text,
             settings.EMAIL_FROM,
             [self.email],
             fail_silently=self.fail_silently,
@@ -62,7 +62,7 @@ class ItemComment(models.Model):
             
         if email != '':  # 测试用逻辑，实际不会出现空值
             context = {}
-            context['comment_text'] = self.text
+            context['comment_text'] =  '您上传的物品有了新评论:' + self.text
             # context['url'] = self.content_object.get_url()
             text = render(None, 'comment/send_mail.html', context).content.decode('utf-8')
             send_mail = SendMail(subject, text, email)
