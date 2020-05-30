@@ -6,6 +6,7 @@ from django.urls import reverse
 
 
 class Item(models.Model):
+    status = models.CharField(max_length=50, verbose_name='目前状态',default='')
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE, verbose_name='创建者')
     name = models.CharField(max_length=50, verbose_name='名称')
     CATEGORY_CHOICES = (
@@ -18,6 +19,7 @@ class Item(models.Model):
     mail_address = models.CharField(max_length=50, default='', verbose_name='Email地址')
     image = models.FileField(blank=True, verbose_name='图片')
     identification_mark = models.TextField(blank=True, verbose_name='具体信息')
+    secret_information = models.TextField(help_text='Separate each item by comma', blank=True)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, verbose_name='标签')
 
     timestamp = models.DateTimeField(auto_now_add=True)
