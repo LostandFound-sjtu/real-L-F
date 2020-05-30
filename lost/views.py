@@ -134,7 +134,7 @@ def lost_item_send_mail(request, id):
     l_item = get_object_or_404(Item, id=id)
     l_name = l_item.name
     l_address = l_item.mail_address
-    message = "您在Lost&Found网站上所上传的 " + l_name + " 有了新动态"
+    message = "您在Lost&Found网站上所上传的 " + l_name + " 是否已经找到，如果找到的话烦请及时删除帖子"
     send_mail('Lost&Found 失物提醒邮件', message, settings.EMAIL_FROM,
     [l_address], fail_silently=False)
     context = {

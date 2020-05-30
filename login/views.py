@@ -24,7 +24,8 @@ def get_login(request):
                 error_msg = '用户名或密码错误'
 
         return render(request, "login.html", {'error_msg': error_msg})
-# render必需的参数¶
+    
+# render必需的参数
 # request
 # 用于生成此响应的请求对象。
 # template_name
@@ -40,7 +41,3 @@ This Function Work
 def get_logout(request):
     logout(request)
     return redirect('index')
-
-
-# 大概是因为分到的app比较简单（login），在官方文档里把函数一个个查完后感觉良好
-# 但是前端还是看不懂，估计得专门学一下
