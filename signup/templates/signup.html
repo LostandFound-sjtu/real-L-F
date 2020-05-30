@@ -12,13 +12,13 @@
     <!-- Start Main Container -->
     <div class="container">
         <div class="row">
-            <div class="offset-1 col-md-10">
+            <div class="col-lg-offset-1 col-lg-10">
                 <br>
                 <h3 class="" style="text-align: center">请在此注册用户</h3>
                 <form action="" method="POST" novalidate enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <button class="btn btn-success">submit</button>
+                    <button class="btn btn-success">提交</button>
                     <div style="margin-bottom: 10px;"></div>
                 </form>
             </div>
